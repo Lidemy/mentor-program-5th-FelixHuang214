@@ -22,3 +22,13 @@
 ![Imgur](https://i.imgur.com/BxKdd9R.png)
 
 6. 將修改後的 hw1, commit 並 push 至 GitHub 
+
+![Imgur](https://i.imgur.com/GyTBbC7.png)
+
+![Imgur](https://i.imgur.com/raOh01X.png)
+
+![Imgur](https://i.imgur.com/OBZD7tT.png)
+
+7. 最後確認 GitHub 上的作業是否上傳完全
+
+![Imgur](https://i.imgur.com/dWaWtvL.png)
