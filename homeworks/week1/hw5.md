@@ -8,7 +8,7 @@
 
 1. 瀏覽器會發送一個 request 經由瀏覽器 -> 作業系統(windows) -> 網卡，並依照網域(google.com)至相對應的 DNS 伺服器，DNS 會傳給我們一個 IP 位址。
 2. 我們可以從 Network 的 search?q=javascript...內的 Headers 發現我們使用 https(傳輸協定) 的 get 方法，而這個就是 request 的請求方法，它會經由瀏覽器 -> 作業系統(windows) -> 網卡，再發送至這個 IP 位址對應的伺服器(Server)。
-3. Server 會視 request 的需求決定是否與資料庫溝通，之後發送一個 response 經由 Sever -> 網卡 -> 作業系統 -> 瀏覽器，而在 status code 中我們看到它回傳了 200，此數字代表請求成功了。
+3. Server 會視 request 的需求決定是否與資料庫溝通，之後發送一個 response 從 Sever -> 網卡 -> 作業系統 -> 瀏覽器，而在 status code 中我們看到它回傳了 200，此數字代表請求成功了。
 4. 因此我們可以看到對方傳送的一些編碼(圖片、文字等等)，這些編碼經過瀏覽器的解析後將帶有圖片及文字的畫面呈現在我們眼前。
 
 
