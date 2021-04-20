@@ -6,15 +6,15 @@
 
 * 假設你的笑話存放在 test 資料夾，這時我們必須先輸入 `git init` 來建立版本控制所需的檔案 `.git`，並輸入 `git status` 確認是否建立成功。
 
-*  Untracked files 下的紅色文字為你還，綠字則反之。如果要將 joke2 加入可以輸入 ` add joke2.txt `
+*  Untracked files 下的紅色文字為你新增的檔案，我們必須先將它加入版本控制內，之後才可以在不同的版本中確認到它的變化；綠字則反之。如果要將 joke2 加入版本控制可以輸入 `git add joke2.txt`
 
 ![Imgur](https://i.imgur.com/FWqkAmQ.png)
 
-* 或是一次加入所有檔案，請輸入 `add .`。
+* 或是一次加入所有檔案，請輸入 `git add .`。
 
 ![Imgur](https://i.imgur.com/OrnQgKb.png)
 
-* 如有不想加入版本控制的檔案，請在資料夾內新建一個 `.gitignore` 檔案，建立方法為輸入`touch.gitignore`。
+* 如有不想加入版本控制的檔案，請在資料夾內新建一個 `.gitignore` 檔案，建立方法為輸入`touch .gitignore`。
 * 接下來我們要在 Git Bash 中修改 `.gitignore` 文件，輸入 `vi(或是 vim) .gitignore` 來啟動文字編輯器。在此模式中按 "i "可以啟動編輯模式， "esc" 可以結束編輯模式，想要離開文字編輯器請先「離開編輯模式」後再輸入 `：q`。而我們要新增的是「不想要加入版本控制」的檔案的名稱，並在結束編輯模式後輸入 `:wq` 存檔並離開該模式。
 
 ![Imgur](https://i.imgur.com/YpnpNS3.png)
@@ -29,11 +29,11 @@
 
 ![Imgur](https://i.imgur.com/hk6Lccl.png)
 
-* 如果之後修改了某些檔案，想建立一個新的版本我們可以直接輸入第3點的 `git commit -am "massage"` (如果是新增檔案的話就必須先 add 後才能 commit )，或是先 add 再輸入 `git commit -m "massage"`(前者是把所有檔案 add 後 commit；後者是只 commit 你 add 過的檔案，未 add 的檔案不會加入 commit，之後如果切換到該版本，沒有 add 的檔案會是上個版本沒有修改過的狀態)，都可以達到同樣的效果。
+* 如果之後修改了某些檔案，想建立一個新的版本我們可以直接輸入 `git commit -am "massage"` (如果是新增檔案的話就必須先 add 後才能 commit )，或是先 add 再輸入 `git commit -m "massage"`(前者是把所有檔案 add 後 commit；後者是只 commit 你 add 過的檔案，未 add 的檔案不會加入 commit，之後如果切換到該版本，沒有 add 的檔案會是上個版本沒有修改過的狀態)，都可以達到同樣的效果。
 
 ![Imgur](https://i.imgur.com/DYjJr3G.png)
 
-* 到這裡我們已經完成了初步的版本控制了，接著我們要學會如何自由切換版本，首先我們要先知道要切換版本的代號，輸入`git log`或是`git log --oneline`，我們可以看到 commit 後有一串代碼，之後只要輸入 `git checkout 代碼(或前7碼)`就可以做到版本切換，之後可以輸入 `git checkout master` 切換到最新版本。
+* 到這裡我們已經完成了初步的版本控制了，接著我們要學會如何自由切換版本，首先我們要先知道要切換版本的代號，輸入`git log`或是`git log --oneline`，我們可以看到 commit 後有一串代碼，之後只要輸入 `git checkout 代碼(或前7碼)`就可以做到版本切換，之後可以輸入 `git checkout master` 切換到初始版本(master)。
 
 ![Imgur](https://i.imgur.com/DNjcW2O.png)
 
@@ -45,5 +45,5 @@
 
 * 重新整理該網頁後，可以發現資料夾內的檔案都會顯示在上面，此時我們可以點擊畫面上的 commit 來知道每次更新版本新增或減少了什麼東西。
 
-* 當每次 commit 後我們都可以在 Git Bash 上用指令把本機的檔案同步到 GitHub 上，輸入`git push origin master` 就可以輕鬆同步；相反的，我們也可以在 GitHub 修改檔案並建立新的  commit，只要在修改完成後輸入 `git pull origin master` 就可以把 GitHub 做的修改同步到本機上了。
+* ~~當每次 commit 後我們都可以在 Git Bash 上用指令把本機的檔案同步到 GitHub 上~~ 切記不要每次 commit 後就 push 至遠端，最好是做到一個階段或做完一個功能並確認完全沒問題再上傳。輸入`git push origin master` 就可以同步至遠端；相反的，我們也可以在 GitHub 修改檔案並建立新的 commit，只要在修改完成後輸入 `git pull origin master` 就可以把 GitHub 做的修改同步到本機上了。
 
