@@ -13,7 +13,7 @@
 ![Imgur](https://i.imgur.com/2nf4F4m.png)
 
 2. 當我們需要變更檔案或是想要在某個位置創建檔案時，我們必須移動至當前位置才能達成目的。 
-   請輸入 cd 想要移動到的位置，例如:我目前的位置為 /c/users/Administrator ，而我想移動到 f 槽的資料夾，因此我輸入 `cd  f:/eshau/test` ，這樣我就切到了 f 槽的 test 資料夾了。
+   請輸入 `cd 想要移動到的位置`，例如:我目前的位置為 /c/users/Administrator ，而我想移動到 f 槽的資料夾，因此我輸入 `cd  f:/eshau/test` ，這樣我就切到了 f 槽的 test 資料夾了。
 
 ![Imgur](https://i.imgur.com/3T3kjqe.png)
 
