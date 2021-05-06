@@ -17,7 +17,7 @@ const data = {
 
 request(data, (error, response, body) => {
   const newBody = JSON.parse(body)
-  if (response.statusCode === 200) {
+  if (response.statusCode >= 200 && response.statusCode < 300) {
     const topGame = newBody.top
     for (let i = 0; i < topGame.length; i++) {
       console.log(topGame[i].viewers, topGame[i].game.name)
