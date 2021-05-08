@@ -20,15 +20,16 @@ const data = {
 }
 
 request(data, (error, response, body) => {
-  const newBody = JSON.parse(body)[0]
-  if (!newBody) {
-    console.log('找不到國家資訊')
-    return 1
+  const newBody = JSON.parse(body)
+  if (response.statusCode >= 200 && response.statusCode < 300) {
+    for (let i = 0; i < newBody.length; i++) {
+      console.log('=============')
+      console.log('國家 :', newBody[i].name)
+      console.log('首都 :', newBody[i].capital)
+      console.log('貨幣 :', newBody[i].currencies[0].code)
+      console.log('國碼 :', newBody[i].callingCodes[0])
+    }
+  } else {
+    console.log('找不到資訊')
   }
-  console.log('=============')
-  console.log('國家 :', newBody.name)
-  console.log('首都 :', newBody.capital)
-  console.log('貨幣 :', newBody.currencies[0].code)
-  console.log('國碼 :', newBody.callingCodes[0])
-  console.log('=============')
 })
