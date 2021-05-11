@@ -37,7 +37,7 @@ Base URL : `https://best_restaurant.com`
 |`top`|依照排名獲取資料，預設為 10 筆資料，可設定 1 - 100 筆資料| /restaurant/top | /restaurant/top?limit=20 |
 |`country`|依照國類型獲取餐廳資料| /restaurant/top?country=國家名稱 | /restaurant/top?country=TW ，使用 [國家地區代碼(依照ISO二位碼)](https://zh.wikipedia.org/wiki/國家地區代碼)。 |
 |`food`|依照食物類型獲取餐廳資料| /restaurant/top?food=食物種類 | /restaurant/top?food=noodle |
-|`region`|依照地區獲取餐廳資料 | /restaurant/top?region=區域名稱 | /restaurant/top?region=NewTC(New Taipei City，前三碼+後方大寫)， 搜尋多個縣市 : /restaurant/top?location=NewTC+TaiC(Taipei City)，使用 [中華郵政-中文地址英譯 ](https://www.post.gov.tw/post/internet/Postal/index.jsp?ID=207#result) |
+|`region`|依照地區獲取餐廳資料 | /restaurant/top?region=區域名稱 | /restaurant/top?region=NewTC(New Taipei City，前三碼+後方大寫)， 搜尋多個縣市 : /restaurant/top?region=NewTC+TaiC(Taipei City)，使用 [中華郵政-中文地址英譯 ](https://www.post.gov.tw/post/internet/Postal/index.jsp?ID=207#result) |
 |`id`|搜尋特定餐廳|/restaurant/:id|/restaurant/15|
 
 網址串接範例 : /restaurant/top?country=TW&region=NewTC+TaiC		取得在新北市及台北市所有的台灣式餐廳
