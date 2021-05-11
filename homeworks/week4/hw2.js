@@ -1,20 +1,19 @@
 const request = require('request')
 const process = require('process')
 
-const data = {
+const option = {
   url: 'https://lidemy-book-store.herokuapp.com/books',
   form: {
 
   }
 }
-const [...argv] = process.argv
-
+const { argv } = process
 const inpusWays = argv[2]
 
 const ways = {
   list: {
     method: 'GET',
-    str: '?_limit=20'
+    queryString: '?_limit=20'
   },
   read: {
     method: 'GET',
@@ -37,11 +36,10 @@ const ways = {
   }
 }
 
-function list(data, ways) {
-  const temp = { ...data }
-  temp.method = ways.list.method
-  temp.url += ways.list.str
-  request(temp, (error, response, body) => {
+function list(option, ways) {
+  option.method = ways.list.method
+  option.url += ways.list.queryString
+  request(option, (error, response, body) => {
     const newBody = JSON.parse(body)
     for (let i = 0; i < newBody.length; i++) {
       console.log(newBody[i].id, newBody[i].name)
@@ -49,54 +47,50 @@ function list(data, ways) {
   })
 }
 
-function read(data, ways) {
-  const temp = { ...data }
-  temp.method = ways.read.method
-  temp.url += `/${ways.read.id}`
-  request(temp, (error, response, body) => {
+function read(option, ways) {
+  option.method = ways.read.method
+  option.url += `/${ways.read.id}`
+  request(option, (error, response, body) => {
     const newBody = JSON.parse(body)
     console.log(newBody.id, newBody.name)
   })
 }
 
-function del(data, ways) {
-  const temp = { ...data }
-  temp.method = ways.delete.method
-  temp.url += `/${ways.delete.id}`
-  request(temp)
+function del(option, ways) {
+  option.method = ways.delete.method
+  option.url += `/${ways.delete.id}`
+  request(option)
 }
 
-function create(data, ways) {
-  const temp = { ...data }
-  temp.method = ways.create.method
-  temp.form.name = ways.create.form.name
-  request(temp)
+function create(option, ways) {
+  option.method = ways.create.method
+  option.form.name = ways.create.form.name
+  request(option)
 }
 
-function update(data, ways) {
-  const temp = { ...data }
-  temp.method = ways.update.method
-  temp.url += `/${ways.update.id}`
-  temp.form.name = ways.update.name
-  request(temp)
+function update(option, ways) {
+  option.method = ways.update.method
+  option.url += `/${ways.update.id}`
+  option.form.name = ways.update.name
+  request(option)
 }
 
 if (inpusWays === 'list') {
-  list(data, ways)
+  list(option, ways)
 }
 
 if (inpusWays === 'read') {
-  read(data, ways)
+  read(option, ways)
 }
 
 if (inpusWays === 'delete') {
-  del(data, ways)
+  del(option, ways)
 }
 
 if (inpusWays === 'create') {
-  create(data, ways)
+  create(option, ways)
 }
 
 if (inpusWays === 'update') {
-  update(data, ways)
+  update(option, ways)
 }
