@@ -1,8 +1,8 @@
 const request = require('request')
 const process = require('process')
 
-const [...argv] = process.argv
-
+const { argv } = process
+/*
 function getName(argv) {
   let result = argv[2]
   for (let i = 3; i < argv.length; i++) {
@@ -11,8 +11,8 @@ function getName(argv) {
   }
   return result
 }
-
-const name = getName(argv)
+*/
+const name = argv[2]
 //  console.log(name)
 
 const data = {
