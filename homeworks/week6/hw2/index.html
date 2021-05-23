@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8" />
+	<style>
+
+		body {
+			margin: 0;
+		}
+
+		/*繪製表單*/
+		.form {
+			margin: 0 auto;
+			padding: 54px 150px 35px 42px;
+			max-width: 645px;
+			margin-top: 129px;
+			box-shadow: 1.8px 2.4px 5px 0 #0000004c;
+			border-top: solid 10px #fad312;
+		}
+
+		/*調整標題文字*/
+		.title__info h1 {
+			font-size: 36px;
+			font-weight: bold;
+			margin: 0px 0px 35px 0px;
+		}
+
+		/*調整活動資訊的文字*/
+		.title__info :nth-child(2) {
+			font-size: 14px;
+			line-height: 2em;
+		}
+
+		/*調整文字「必填」*/
+		.title__info :nth-child(3) {
+			color:red;
+			color: #e74149;
+			font-size: 16px;
+			margin-top: 20px;
+		}
+
+		/*統一調整每種類型區塊與上方區塊的距離*/
+		.section {
+			margin-top: 50px;
+		}
+
+		h1, h2, h3, h4, h5, p {
+			margin: 0;
+		}
+
+		/*統一設定每一個輸入欄+標題，與其他欄位的距離*/
+		.questions {
+			margin: 52px 0px;
+		}
+
+		/* 調整"*"的顏色*/
+		span {
+			color: red;
+		}
+
+		/*統一調整輸入框與上方距離*/
+		.section input {
+			margin-top: 24px;
+		}
+
+		/*「其他」的說明文字*/
+		h5 {
+			font-size: 14px;
+			margin-top: 8px;
+		}
+		
+		/*統一調整輸入欄的標題文字*/
+		h3 {
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		/*統一調整資訊文字*/
+		p {
+			font-size: 14px;
+		}
+
+		/*統一調整 list 內選項的文字*/
+		label {
+			font-size: 14px;
+		}
+
+		/*修改提交按鈕*/
+		input[type=submit] {
+			background: #fad312;
+			padding: 13px 30px;
+			color: black;
+			font-size: 15px;
+			border: none;
+			margin-bottom: 15px;
+		}
+
+		/*輸入框內預設文字為灰色*/
+		input::placeholder {
+  		color: #afafaf;
+		}
+
+		/*繪製下方版權區塊*/
+		.navbar {
+			margin-top: 66px;
+			padding: 26px;
+			text-align: center;
+			background: black;
+			color: #999999;
+			font-size: 13px;font-size: ;
+		}
+
+		/* RWD 調整，只將表格縮成適合的大小，且內容置中*/
+		@media(max-width: 768px) {
+
+			.form {
+				margin: 0 auto;
+				padding: 100px 0px 100px 0px;
+				max-width: 475px;
+				text-align: center;
+			}
+			
+			.title__info h1 {
+				white-space: nowrap;
+			}
+
+		}
+	</style>
+</head>
+<body>
+	<form class="form">
+		<div class="title__info">
+			<h1>新拖延運動報名表單</h1>
+			<p>
+				活動日期：2020/12/10 ~ 2020/12/11<br>
+				活動地點：台北市大安區新生南路二段1號
+			</p>
+			<p><span>*</span> 必填</p>
+		</div>
+		<section class="section">
+			<div>
+				<h3>暱稱 <span>*</span></h3>
+				<input type="text" placeholder="您的回答" onclick="this.placeholder=''" size="40" />
+			</div>
+			<div class="questions">
+				<h3>電子郵件 <span>*</span></h3>
+				<input type="email" placeholder="您的電子郵件" onclick="this.placeholder=''" size="40" />
+			</div>
+			<div class="questions">
+				<h3>手機號碼 <span>*</span></h3>
+				<input type="tel" placeholder="您的手機號碼" onclick="this.placeholder=''" size="40" />
+			</div>
+		</section>
+		<section class="section">
+			<div class="list">
+				<h3>報名類型 <span>*</span></h3>
+				<input type="radio" name="types" id="r1"/>
+				<label for="r1">躺在床上用想像力實作</label>
+				<p>
+					<input type="radio" name="types" id="r2"/>
+					<label for="r2">趴在地上滑手機找現成的</label>
+				</p>
+			</div>
+		</section>
+		<section class="section">
+			<div class="questions">
+				<h3>怎麼知道這個活動的？ <span>*</span></h3>
+				<input type="text" placeholder="您的回答" onclick="this.placeholder=''" size="40" />
+			</div>
+			<div class="questions">
+				<h3>其他</h3>
+				<h5>對活動的一些建議</h5>
+				<input type="text" placeholder="您的回答" onclick="this.placeholder=''" size="40" />
+			</div>
+		</section>
+		<section class="section">
+			<input type="submit" value="提交" >
+			<h5>請勿透過表單送出您的密碼</h5>
+		</section>
+	</form>
+	<nav class="navbar">
+		<p>© 2020 © Copyright. All rights Reserved.</p>
+	</nav>
+</body>
+</html>

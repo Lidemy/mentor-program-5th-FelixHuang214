@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>餐廳官網</title>
+
+	<style>
+		body {
+			margin: 0;
+		}
+
+		.navbar {
+			box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+		}
+
+		.navbar .wrap {
+			height: 84px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+		}
+
+		.wrap {
+			max-width: 1280px;
+    	margin: 0 auto;
+    	padding: 0px 12px;
+		}
+
+		.navbar__list {
+			display: flex;
+		}
+
+		.navbar__list li {
+			list-style: none;
+			padding: 13px 25px;
+			border-radius: 8px;
+			font-size: 18px;
+		}
+
+		.navbar__list li+li{
+			margin-left: 10px;
+		}
+
+		.navbar__list li.active a, .navbar__list li:hover a {
+			color:white;
+		}
+
+		.navbar__list li:hover {
+			background: #ff7286;
+		}
+
+		.navbar__list a {
+			text-decoration: none;
+			color: black;
+		}
+
+
+		.navbar__site-name {
+			font-size: 36px;
+			color: #489846;
+		}
+
+		.active {
+			background: #ff7286;
+		}
+
+		.banner {
+			position: relative;
+			height: 450px;
+			background: url(bg.jpg) center/cover no-repeat;
+		}
+
+		.banner:after {
+			content: '';
+			position: absolute;
+			background: rgba(0, 0, 0, 0.4);
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+
+		h1 {
+			margin: 0;
+		}
+
+		.banner h1 {
+			display: inline-block;
+			color: white;
+			position: relative;
+			top: 50%;
+			left: 50%;
+			font-size: 60px;
+			font-weight: bold;
+			transform: translate(-50%, -50%);
+			z-index: 2;
+		}
+
+		.section {
+			text-align: center;
+			position: relative;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		.section__title {
+			display: inline-block;
+			border-left: solid 15px #a3dea2;
+			padding-left: 12px;
+			margin-top: 80px;
+			margin-bottom: 36px;
+		}
+
+		.section__desc {
+			line-height: 2em;
+			margin-bottom: 36px;
+		}
+
+		.button {
+			padding: 61px 80px;
+			color: #3e613d;
+			font-size: 36px;
+			display: inline-block;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: transform 0.1s;
+		}
+
+		.button:hover {
+			transform: scale(1.1);
+		}
+
+		.order {
+			background: #a8e8e1;
+		}
+
+		.query {
+			background: #f9f9b5;
+			margin-left: 23px;
+		}
+
+		
+		.section__images {
+			display: flex
+		}
+
+		/*將 div 平均切成 4 塊*/
+		.section__images div {
+			width: 25%;
+		}
+
+		/*使圖片大小為 div 區塊*/
+		.section__images img {
+			width: 100%;
+		}
+
+		/* ↑ 上面的程式碼基本與補充影片類似，但因為是看完影片後再自己寫的，所以還是會有些差別 */
+
+
+		.section__client {
+			display: flex;
+			position: relative;
+			margin: 0px 0px 60px -73px;
+		}
+
+		/*評論區塊包含外面框線*/
+		.comment {
+			width: 445px;
+  		height: 205px;
+			border: solid 1px #c7e5ec;
+			margin: -74px 0px;
+		}
+
+		/*評論區內文字的行距及位置*/
+		.comment p {
+			line-height: 1.5em;
+			position: relative;
+			top: 50%;
+			font-size: 16px;
+		}
+
+		/*調整評論區與上方標題的距離及評論區間格的距離*/
+		.client {
+			margin: 35px 16px;
+			margin-top: 35px;
+		}
+
+		/*統一大頭照區塊的大小*/
+		.headshot {
+			position: relative;
+			left: 14px;
+			width: 408px;
+			height: 136.2px;
+
+		}
+
+		/*版權方塊元素*/
+		.footer__bottom p {
+			padding: 10px;
+			font-size: 16px;
+			background: #35564b;
+			text-align: center;
+			color: white;
+		}
+
+		/*調整餐廳資訊區塊內元素*/
+		.footer__top {
+			display: flex;
+			padding: 40px;
+			background: #e8efee;
+			justify-content: space-between;
+		}
+
+		/*調整餐廳資訊左側區塊*/
+		.footer__top-left {
+			line-height: 2em;
+			font-size: 14px;
+			color: #484848;
+		}
+
+		/*調整餐廳資訊右側文字(Facebook...)*/
+		.footer__top-right p {
+			padding-top: 15px;
+			font-size: 18px;
+		}
+
+		/*調整與上方地圖的距離*/
+		footer {
+			margin-top: 43px;
+		}
+
+		@media(max-width: 768px) {
+
+
+			.navbar .wrap {
+				height: 158px;
+				flex-direction: column;
+				padding: 0px;
+			}
+
+			.navbar__list li {
+				flex: 1;
+				border-radius: 0;
+				text-align: center;
+				padding: 13px;
+			}
+
+			.navbar__list {
+				display: flex;
+				align-items: center;
+				width: 100%;
+				position: relative;
+				margin-right: 40px;
+			}
+
+			.navbar__site-name {
+				position: relative;
+				top: 20px;
+			}
+
+			.button {
+				padding: 60px 60px;
+			}
+
+			.query {
+			margin-left: 0px;
+			margin-top: 10px;
+			}
+
+			.section__images {
+			flex-direction: column;
+			}
+
+			.section__images div {
+				width: 100%;
+			}
+
+			.section__client {
+				flex-direction: column;
+				position: relative;
+				left: 0%;
+				margin: 0;
+				align-items:center;
+			}
+
+			.client {
+				margin-bottom: 100px;
+				margin-top: 0;
+			}
+
+			.footer__top {
+					flex-direction: column-reverse;
+			}
+
+			.footer__top-left {
+				margin-right: 0;
+				margin-top: 16px;
+			}
+
+			.footer__top-right p {
+				position: static;
+			}
+
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar">
+		<div class="wrap">
+			<div class="navbar__site-name">Just A Bite!</div>
+			<ul class="navbar__list">
+				<li class='active'><a href="#">抽個大獎</a></li>
+				<li><a href="#">我要點餐</a></li>
+				<li><a href="#">查詢訂單</a></li>
+				<li><a href="#">常見問題</a></li>
+			</ul>
+		</div>
+	</nav>
+	<section class='banner'>
+		<h1>咬一口廚房</h1>
+	</section>
+	<div class="wrap">
+		<section class="section">
+			<div class="section__title">
+				<h1>當輕食之風盛起</h1>
+			</div>
+			<div class="section__desc">
+				<p>
+					由於現代人生活忙碌，常以外食為主，當高糖、高鹽、高油成為人們的日常，會導致慢性疾病與肥胖的機率大增。
+					<br>我們定期走訪農田，選用最天然、營養的食材，以簡單的烹調方式處理，最大化忠實呈現食材原本的鮮味。<br>咬一口不只賣餐點，我們希望能夠讓大家愛上料理的魅力，餐館特意打造全開放式廚房，烹調透明化，也不定時舉辦美食廚房DIY，讓大家體驗不需要過多調味，就能擁有千變萬化的食物口感。
+				</p>
+			</div>
+			<div class="order__buttons">
+				<div class="button order">我要點餐</div>
+				<div class="button query">查詢訂單</div>
+			</div>
+		</section>
+	</div>
+	<section class="section">
+			<div class="section__title">
+				<h1>Menu 搶先看</h1>
+			</div>
+			<div class="section__images">
+				<div><img src="f-001.png" /></div>
+				<div><img src="f-002.png" /></div>
+				<div><img src="f-003.png" /></div>
+				<div><img src="f-004.png" /></div>
+			</div>
+	</section>
+	<div class="wrap">
+		<section class="section">
+			<div class="section__title">
+				<h1>吃過都說好</h1>
+			</div>
+			<div class="section__client">
+				<div class="client">
+					<div class="headshot"><img src="p-1.png" /><br>國父桑</div>
+					<div class="comment">
+						<p>
+						我一生疲於建國，去過日本，去過歐洲，卻從未到過台北101，也從來沒有吃過這麼好吃的東西...今天在時空旅行者的幫助下我終於吃到了...此生再無遺憾 QAQ!!
+						</p>
+					</div>
+				</div>
+				<div class="client">
+					<div class="headshot"><img src="p-2.png" /><br>可達鴨</div>
+					<div class="comment">
+						<p>
+						三雙鞋等於30，兩個人加一雙鞋等於20，一雙冰淇淋加一雙冰淇淋加一個人等於13，那$#%$#%^%$^##$%等於多少...唉，大概咬一口就知道了!!!
+						</p>
+					</div>
+				</div>
+				<div class="client">
+					<div class="headshot"><img src="p-3.png" /><br>旅かえる旅行青蛙</div>
+					<div class="comment">
+						<p>
+						自從呱呱呱呱呱以後，我呱呱呱呱呱，非常感謝呱呱呱呱呱，下次呱呱呱呱呱我呱呱呱呱呱，一定呱呱呱呱呱!!!
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<div class="wrap">
+		<section class="section">
+				<div class="section__title">
+					<h1>我們在哪裡</h1>
+				</div>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14460.031820041626!2d121.5645561!3d25.0338041!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx!5e0!3m2!1szh-TW!2stw!4v1621661062866!5m2!1szh-TW!2stw" width="100%" height="455px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+		</section>
+	</div>
+	<footer>
+		<div class="footer__top">
+			<div class="footer__top-left">
+				<p>餐館地址: 天上地下天堂路三分之一里六段520號<br>訂位專線：02-1314-5566<br>營業時間：週一〜週五 09:00~18:00 / 週六、週日、國定假日（含連假）休息<br>email：service@justabite.com.tw
+				</p>
+			</div>
+			<div class="footer__top-right">
+				<div class="navbar__site-name">Just A Bite!</div>
+				<p>Facebook / Instagram / Youtube</p>
+			</div>
+		</div>
+		<div class="footer__bottom">
+			<p>Copyright © 2020 Just A Bite All Rights Reserved. 咬一口股份有限公司版權所有</p>
+		</div>
+	</footer>
+</body>
+</html>
