@@ -1,0 +1,232 @@
+.form {
+	margin: 0 auto;
+	padding: 35px 50px;
+	max-width:  660px;
+	min-height: 760px;
+	margin-top: 120px;
+	background: #c1f1ee54;
+	box-shadow: 2px 2px 8px #8da7a7;
+}
+
+.title-block {
+	text-align: center;
+	position: relative;
+}
+
+.site-name {
+	font-size: 48px;
+	letter-spacing: -2px;
+	color: #007979;
+}
+
+/*繪製上方兩個圈*/
+.site-name:before, .site-name:after {
+	content: '';
+	display: inline-block;
+	background: #5fad9ede;
+	padding: 17px;
+	position: absolute;
+	border-radius: 50%;
+	box-shadow: 2px 2px 6px #244c4a;
+}
+
+.site-name:before {
+	left: 0;
+	top: -20px;
+}
+
+.site-name:after {
+	right: 0;
+	top: -20px;
+}
+
+/*輸入框*/
+.input-block__add {
+	color: #009393;
+	border: inherit;
+	width: 100%;
+	padding: 10px;
+	background: #c1f1ee54;
+	font-size: 20px;
+}
+
+.input-block__add:hover {
+	outline: solid;
+	outline-color: #009393;
+	transition: all 0.1s;
+}
+
+input::placeholder {
+	color: #bebebe;
+}
+
+/*統一控制完成後的元素動作*/
+.finished {
+	opacity: 0.4;
+}
+
+.list-block {
+	list-style-type: none;
+}
+
+/*繪製勾*/
+.finished .done--hidden:before {
+	content: '\e876';
+	font-family: 'Material Icons';
+	font-size: 15px;
+	position: relative;
+	left: -3px;
+	color: #007979;
+}
+
+/*確認是否完成的框*/
+.checkbox {
+	height: 23px;
+	width: 23px;
+	background: white;
+	border: 2px solid #007979;
+	border-radius: 5px;
+	transition: all 0.2s;
+}
+
+.checkbox:hover {
+	cursor: pointer;
+}
+
+.unfinished .checkbox:hover {
+	transform: scale(1.1, 1.1);
+	transition: all 0.2s;
+}
+
+/*每一條待辦事項區塊*/
+.item {
+	display: flex;
+	align-items: center;
+	position: relative;
+	max-height: 70px;
+}
+
+/*待辦事項名稱*/
+.item-name {
+	margin-left: 20px;
+	max-height: 27px;
+	font-size: 24px;
+	color: #007979;
+	position: relative;
+	transition: all 0.2s;
+}
+
+.unfinished .item-name:hover {
+	cursor: pointer;
+	transform: scale(1.05, 1.05);
+	transition: all 0.2s;
+}
+
+/*刪除線*/
+.finished .item-name:before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: -5%;
+	display: block;
+	width: 110%;
+	border: 1px solid ;
+}
+
+/*名稱底線*/
+.unfinished .bottom-line:after {
+	content: '';
+	position: absolute;
+	bottom: -1px;
+	height: 2px;
+	width: 0px;
+	background: #3ea75487;
+	left: 50%;
+	transition: all 0.1s linear;
+}
+
+/*讓底線有往外擴散的感覺*/
+.bottom-line:hover:after {
+	width: 100%;
+	left: 0;
+	transition: all 0.1s linear;
+}
+
+/*刪除區塊*/
+.delete-block {
+	padding: 10px;
+	position: absolute;
+	right: 0;
+}
+
+/*繪製Ｘ*/
+.delete-block:before, .delete-block:after {
+	content: '';
+	position: absolute;
+	padding: 1.2px;
+  width: 53%;
+	height: 1px;
+	background: #007979;
+	top: 42%;
+	left: 50%;
+}
+
+.delete-block:before {
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.delete-block:after {
+	transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.delete-block:hover {
+	transform: scale(1.1, 1.1);
+	cursor: pointer;
+}
+
+/*
+.note--hidden {
+	display: none;
+}
+
+.note {
+	background: rgba(222, 205, 122, 1);
+	box-shadow: 2px 2px 8px #8da7a7;
+	position: relative;
+	padding: 10px 15px;
+	white-space: pre-wrap;
+	outline: none;
+	height: 200px;
+	width: 300px;
+	auto-focus: true;
+}
+*/
+
+/*完成氣泡*/
+.bubble-fin {
+	display: none;
+	color: white;
+  font-size: 13px;
+  width: 50px;
+  background: #189BA3;
+  text-align: center;
+  padding: 11px 0;
+  position: absolute;
+  right: 34px;
+  top: -7px;
+  border-radius: 6px;
+}
+
+.bubble-fin:after {
+	content: '';
+	position: absolute;
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent transparent transparent #189BA3;
+	top: 32%;
+	left: 100%;
+}
+
+.unfinished .checkbox:hover .bubble-fin {
+	display: inline;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My List</title>
+	<link rel="stylesheet" href="../../../node_modules/normalize.css/normalize.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons" />
+	<link rel="stylesheet" href="./style.css" type="text/css" />
+</head>
+<body>
+	<div class="form">
+			<div class="title-block">
+				<p class="site-name">My List</p>
+			</div>
+			<div class="input-block">
+				<input class="input-block__add"type="text" placeholder="Add something to do here!" />
+			</div>
+			<ul class="list-block">
+				<li class="item unfinished">
+					<button class="checkbox done--hidden" type="button">
+						<span class="bubble-fin">完成</span>
+					</button>
+					<p class="item-name bottom-line">Books list</p>
+					<!--<div class="note-block">
+						<textarea class="note note--hidden"></textarea>
+					</div>-->
+					<div id="del" class="delete-block"></div>
+				</li>
+				<li class="item unfinished">
+					<button class="checkbox done--hidden" type="button">
+						<span class="bubble-fin">完成</span>
+					</button>
+					<p class="item-name bottom-line">Buy list</p>
+					<div id="del" class="delete-block"></div>
+				</li>
+				<li class="item unfinished">
+					<button class="checkbox done--hidden" type="button">
+						<span class="bubble-fin">完成</span>
+					</button>
+					<p class="item-name bottom-line">Books list</p>
+					<div id="del" class="delete-block"></div>
+				</li>
+				<li class="item unfinished">
+					<button class="checkbox done--hidden" type="button">
+						<span class="bubble-fin">完成</span>
+					</button>
+					<p class="item-name bottom-line">Pay biils</p>
+					<div id="del" class="delete-block"></div>
+				</li>
+			</ul>
+	</div>
+	<script src="./index.js" type="text/javascript"></script>
+</body>
+</html>
