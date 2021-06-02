@@ -1,0 +1,284 @@
+p, h1, h4 {
+	margin: 0;
+}
+
+.navbar {
+	box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+}
+
+.navbar .wrap {
+	height: 84px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.wrap {
+	margin: 0 auto;
+	padding: 0px 12px;
+}
+
+.navbar__list {
+	display: flex;
+}
+
+.navbar__list li {
+	list-style: none;
+	padding: 13px;
+	border-radius: 8px;
+	font-size: 14px;
+}
+
+.navbar__list li+li{
+	margin-left: 5px;
+}
+
+.navbar__list li.active a, .navbar__list li:hover a {
+	color:white;
+}
+
+.navbar__list li:hover {
+	background: #ff7286;
+}
+
+.navbar__list a {
+	text-decoration: none;
+	color: black;
+}
+
+.navbar__site-name {
+	font-size: 36px;
+	color: #489846;
+}
+
+.active {
+	background: #ff7286;
+}
+
+.section {
+	text-align: center;
+	position: relative;
+}
+
+.section__title {
+	display: inline-block;
+	border-left: solid 15px #a3dea2;
+	padding-left: 12px;
+	margin-top: 80px;
+	margin-bottom: 36px;
+}
+
+p {
+	font-size: 18px;
+}
+
+.Q:not(.Q-content) {
+	margin: 10px 0px;
+	position: relative;
+	left: 72px;
+	font-weight: normal;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.Q-content {
+	cursor: default;
+}
+
+/* 繪製前面的 Q1、Q2...*/
+.Q:before {
+	font-size: 24px;
+  content: attr(data-value);
+  position: absolute;
+  left: -50px;
+  top: -5px;
+  color: #70b282;
+  letter-spacing: 0.22px;
+}
+
+.list-wrap {
+	display: flex;
+	justify-content: center;
+}
+
+.faq-block {
+	position: relative;
+	list-style: none;
+}
+
+/*繪製問題中間的區隔線*/
+.Q-line {
+	width: 758px;
+	height: 1px;
+	background: #a6e2c0;
+	margin: 20px 0px;
+}
+
+.Q-content {
+	display: none;
+	max-width: 680px;
+	line-height: 27px;
+	white-space: pre-line;
+}
+
+.Q-click .content--hidden {
+	display: block;
+}
+
+.Q-title {
+	display: inline-block;
+}
+
+.Q-unclick .title--hover:hover {
+	transform: scale(1.02, 1.05);
+}
+
+/*版權方塊元素*/
+.footer__bottom p {
+	padding: 10px;
+	font-size: 16px;
+	background: #35564b;
+	text-align: center;
+	color: white;
+}
+
+/*調整餐廳資訊區塊內元素*/
+.footer__top {
+	display: flex;
+	padding: 40px;
+	background: #e8efee;
+	justify-content: space-between;
+}
+
+/*調整餐廳資訊左側區塊*/
+.footer__top-left {
+	line-height: 2em;
+	font-size: 14px;
+	color: #484848;
+}
+
+/*調整餐廳資訊右側文字(Facebook...)*/
+.footer__top-right p {
+	padding-top: 15px;
+	font-size: 18px;
+}
+
+/*調整與上方地圖的距離*/
+footer {
+	margin-top: 43px;
+}
+
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+
+	.section {
+    font-size: 28px;
+    padding: 36px 0px;
+	}
+
+	.Q-title {
+		font-size: 30px;
+	}
+
+	.Q:not(.Q-content) {
+		line-height: 48px;
+	}
+
+	.Q-content {
+		font-size: 22px;
+		line-height: 43px;
+	}
+	.list-wrap {
+		padding: 60px 0px;
+	}
+
+	.wrap {
+		padding: 36px 0px;
+	}
+
+	.navbar .navbar__site-name {
+		font-size: 50px;
+		margin-left: 20px;
+	}
+
+	.footer__top-right .navbar__site-name {
+		font-size: 36px;
+		position: relative;
+   	left: 25%;
+	}
+	.Q-line {
+		margin: 25px;
+	}
+
+	.navbar__list li {
+    padding: 27px 25px;
+    font-size: 26px;
+	}
+}
+
+@media(max-width: 768px) {
+
+	.navbar .wrap {
+		height: 15%;
+		flex-direction: column;
+	}
+
+	.navbar__site-name {
+		margin-top: 12px;
+	}
+
+	.navbar__list {
+		position: relative;
+		left: -8%;
+	}
+
+	.navbar__list li {
+		padding: 14px;
+	}
+
+	.faq-block {
+		position: relative;
+		max-width: 65%;
+		right: 17%;
+	}
+
+	.Q-content {	
+		min-width: 100%;
+    position: relative;
+	}
+
+	.footer__top {
+		flex-direction: column-reverse;
+		justify-content: center;
+	}
+
+	.Q {
+		font-size: 14px;
+	}
+
+	.Q-line {
+		max-width: 135%;
+	}
+
+	.Q-title {
+		line-height: 1.3em;
+	}
+
+	.footer__top-right .navbar__site-name {
+		font-size: 26px;
+		position: relative;
+   	left: 25%;
+	}
+
+	.footer__top-right {
+		margin-bottom: 20px;
+	}
+
+	.footer__top-left {
+		font-size: 12px;
+	}
+	.navbar__list li+li {
+		margin-left: 21px;
+	}
+
+}
