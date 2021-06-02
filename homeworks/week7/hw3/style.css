@@ -1,3 +1,7 @@
+body {
+	min-width: 280px;
+}
+
 .form {
 	margin: 0 auto;
 	padding: 35px 50px;
@@ -229,4 +233,35 @@ input::placeholder {
 
 .unfinished .checkbox:hover .bubble-fin {
 	display: inline;
+}
+
+@media(max-width: 359px) {
+	.item-name {
+		left: -14%;
+		max-height: 32px;
+		font-size: 16px;
+	}
+
+	.checkbox {
+		left: -20%;
+		position: relative;
+	}
+
+	.site-name:before {
+		left: -15%;
+		top: -20px;
+	}
+
+	.site-name:after {
+		right: -15%;
+		top: -20px;
+	}
+
+	input::placeholder {
+		font-size: 14px;
+	}
+
+	.unfinished .checkbox:hover .bubble-fin {
+		display: none;
+	}
 }

@@ -26,6 +26,7 @@ input.addEventListener('keydown', (e) => {
       <div id="del" class="delete-block"></div>
     `
     list.appendChild(newItem)
+    input.value = ''
   }
 })
 
