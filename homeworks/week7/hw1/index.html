@@ -2,6 +2,7 @@
 
 <head>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet"
 				href="https://fonts.googleapis.com/css?family=Material+Icons" />
 	<link rel="stylesheet" type="text/css" href="./style.css" />
@@ -10,6 +11,7 @@
 			margin: 0;
 			background: #efefef;
 		}
+
 	</style>
 </head>
 <body>
@@ -25,21 +27,21 @@
 		<section class="section">
 			<div class="questions">
 				<h3 class="require">暱稱</h3>
-				<input type="text" placeholder="您的回答" onclick="this.placeholder=''" size="40" name="nickname"/><br>
+				<input type="text" placeholder="您的回答" size="40" name="nickname"/><br>
 				<div class="alert-block alert-block--hidden">
 					<span class="alert-block__words">此欄位不可為空</span>
 				</div>
 			</div>
 			<div class="questions">
 				<h3 class="require">電子郵件</h3>
-				<input type="email" placeholder="您的電子郵件" onclick="this.placeholder=''" size="40" name="email"/><br>
+				<input type="text" placeholder="您的電子郵件" size="40" name="email"/><br>
 				<div class="alert-block alert-block--hidden">
 					<span class="alert-block__words">此欄位不可為空</span>
 				</div>
 			</div>
 			<div class="questions">
 				<h3 class="require">手機號碼</h3>
-				<input type="tel" placeholder="您的手機號碼" onclick="this.placeholder=''" size="40" name="phone"/><br>
+				<input type="tel" placeholder="您的手機號碼" size="40" name="phone"/><br>
 				<div class="alert-block alert-block--hidden">
 					<span class="alert-block__words">此欄位不可為空</span>
 				</div>
@@ -48,9 +50,9 @@
 		<section class="section">
 			<div class="list">
 				<h3 class="require">報名類型</h3>
-				<input type="radio" id="r1" name="list"/>
+				<input type="radio" id="r1" name="radio"/>
 				<label for="r1">躺在床上用想像力實作</label><br>
-				<input type="radio" id="r2" name="list"/>
+				<input type="radio" id="r2" name="radio"/>
 				<label for="r2">趴在地上滑手機找現成的</label>
 				<div class="alert-block alert-block--hidden">
 					<span class="alert-block__words">必須選一個選項</span>
@@ -60,7 +62,7 @@
 		<section class="section">
 			<div class="questions">
 				<h3 class="require">怎麼知道這個活動的？</h3>
-				<input type="text" placeholder="您的回答" onclick="this.placeholder=''" size="40" name="activity"/>
+				<input type="text" placeholder="您的回答" size="40" name="activity"/>
 				<div class="alert-block alert-block--hidden">
 					<span class="alert-block__words">此欄位不可為空</span>
 				</div>
@@ -68,17 +70,20 @@
 			<div class="questions">
 				<h3>其他</h3>
 				<h5>對活動的一些建議</h5>
-				<input type="text" placeholder="您的回答" onclick="this.placeholder=''" size="40" name="else"/>
+				<input type="text" placeholder="您的回答" size="40" name="else"/>
 			</div>
 		</section>
 		<section class="section">
-			<input type="submit" value="提交" >
+			<input type="submit" value="提交" />
 			<h5>請勿透過表單送出您的密碼</h5>
+			<input type="reset" name="reset"/>
 		</section>
 	</form>
-	<nav class="navbar">
-		<p>© 2020 © Copyright. All rights Reserved.</p>
-	</nav>
+	<footer>
+		<nav class="navbar">
+			<p>© 2020 © Copyright. All rights Reserved.</p>
+		</nav>
+	</footer>
 	<script src="./index.js" type="text/javascript" ></script>
 </body>
 </html>

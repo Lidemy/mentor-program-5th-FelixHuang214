@@ -14,7 +14,7 @@ list.addEventListener('mouseover', (e) => {
 
 input.addEventListener('keydown', (e) => {
   if (e.keyCode === 13) {
-    const content = input.value
+    const content = escapeHtml(input.value)
     const newItem = document.createElement('li')
     newItem.classList.add('item')
     newItem.classList.add('unfinished')
@@ -26,6 +26,7 @@ input.addEventListener('keydown', (e) => {
       <div id="del" class="delete-block"></div>
     `
     list.appendChild(newItem)
+    input.value = ''
   }
 })
 
@@ -50,6 +51,15 @@ form.addEventListener('click', (e) => {
     onOff.classList.toggle('unfinished')
   }
 })
+
+function escapeHtml(unsafe) {
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
 
 /*
 const checkbox = document.querySelectorAll('.checkbox')

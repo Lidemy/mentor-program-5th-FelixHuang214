@@ -9,6 +9,13 @@
 	border-top: solid 10px #fad312;
 }
 
+footer {
+	height: 100px;
+	position: relative;
+	margin-top: 66px;
+	width: 100%;
+}
+
 /*調整標題文字*/
 .title__info h1 {
 	font-size: 36px;
@@ -87,15 +94,20 @@ input::placeholder {
 	color: #afafaf;
 }
 
+input[name=reset] {
+	display: none;
+}
+
+
 /*繪製下方版權區塊*/
 .navbar {
 	border-top: 2px solid yellow;
-	margin-top: 66px;
-	padding: 26px;
+	height: 100px;
+	width: 100%;
 	text-align: center;
 	background: black;
 	color: #999999;
-	font-size: 13px;font-size: ;
+	font-size: 13px;
 }
 
 .require:after {
@@ -107,7 +119,6 @@ input::placeholder {
 @media(max-width: 768px) {
 
 	.login-form {
-		margin: 0 auto;
 		padding: 100px 0px 100px 0px;
 		max-width: 475px;
 		text-align: center;
@@ -115,6 +126,19 @@ input::placeholder {
 	
 	.title__info h1 {
 		white-space: nowrap;
+	}
+
+	.navbar {
+		position: absolute;
+		margin-top: 0;
+		height: 100px;
+		width: 100%;
+		bottom: 0;
+		left: 0;
+	}
+
+	.alert-block {
+		left: 11%;
 	}
 }
 

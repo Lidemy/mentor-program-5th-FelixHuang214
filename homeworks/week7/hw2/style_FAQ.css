@@ -24,13 +24,13 @@ p, h1, h4 {
 
 .navbar__list li {
 	list-style: none;
-	padding: 13px 25px;
+	padding: 13px;
 	border-radius: 8px;
-	font-size: 18px;
+	font-size: 14px;
 }
 
 .navbar__list li+li{
-	margin-left: 10px;
+	margin-left: 5px;
 }
 
 .navbar__list li.active a, .navbar__list li:hover a {
@@ -72,13 +72,17 @@ p {
 	font-size: 18px;
 }
 
-.Q {
+.Q:not(.Q-content) {
 	margin: 10px 0px;
 	position: relative;
 	left: 72px;
 	font-weight: normal;
 	cursor: pointer;
 	display: inline-block;
+}
+
+.Q-content {
+	cursor: default;
 }
 
 /* 繪製前面的 Q1、Q2...*/
@@ -165,9 +169,57 @@ footer {
 }
 
 
-@media(max-width: 780px) {
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+
+	.section {
+    font-size: 28px;
+    padding: 36px 0px;
+	}
+
+	.Q-title {
+		font-size: 30px;
+	}
+
+	.Q:not(.Q-content) {
+		line-height: 48px;
+	}
+
+	.Q-content {
+		font-size: 22px;
+		line-height: 43px;
+	}
+	.list-wrap {
+		padding: 60px 0px;
+	}
+
+	.wrap {
+		padding: 36px 0px;
+	}
+
+	.navbar .navbar__site-name {
+		font-size: 50px;
+		margin-left: 20px;
+	}
+
+	.footer__top-right .navbar__site-name {
+		font-size: 36px;
+		position: relative;
+   	left: 25%;
+	}
+	.Q-line {
+		margin: 25px;
+	}
+
+	.navbar__list li {
+    padding: 27px 25px;
+    font-size: 26px;
+	}
+}
+
+@media(max-width: 768px) {
+
 	.navbar .wrap {
-		height: 125px;
+		height: 15%;
 		flex-direction: column;
 	}
 
@@ -177,7 +229,7 @@ footer {
 
 	.navbar__list {
 		position: relative;
-		left: -30px;
+		left: -8%;
 	}
 
 	.navbar__list li {
@@ -186,12 +238,13 @@ footer {
 
 	.faq-block {
 		position: relative;
-		max-width: 75%;
-		margin-right: 62px;
+		max-width: 65%;
+		right: 17%;
 	}
 
 	.Q-content {	
-		max-width: 80%;
+		min-width: 100%;
+    position: relative;
 	}
 
 	.footer__top {
@@ -199,11 +252,33 @@ footer {
 		justify-content: center;
 	}
 
+	.Q {
+		font-size: 14px;
+	}
+
 	.Q-line {
-		max-width: 90%;
+		max-width: 135%;
 	}
 
 	.Q-title {
 		line-height: 1.3em;
 	}
+
+	.footer__top-right .navbar__site-name {
+		font-size: 26px;
+		position: relative;
+   	left: 25%;
+	}
+
+	.footer__top-right {
+		margin-bottom: 20px;
+	}
+
+	.footer__top-left {
+		font-size: 12px;
+	}
+	.navbar__list li+li {
+		margin-left: 21px;
+	}
+
 }
