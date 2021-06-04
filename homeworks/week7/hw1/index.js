@@ -1,32 +1,59 @@
-const names = ['nickname', 'email', 'phone', 'list', 'activity', 'else']
-const namesCH = ['暱稱', '電子郵件', '手機號碼', '報名類型', '怎麼知道這個活動的', '其他']
-const submit = document.querySelector('input[type=submit]')
-submit.addEventListener('click', getForm)
+const inputArray = [
+  {
+    name: 'nickname',
+    nameCH: '暱稱'
+  },
+  {
+    name: 'email',
+    nameCH: '電子郵件'
+  },
+  {
+    name: 'phone',
+    nameCH: '手機號碼'
+  },
+  {
+    name: 'radio',
+    nameCH: '報名類型'
+  },
+  {
+    name: 'activity',
+    nameCH: '怎麼知道這個活動的'
+  },
+  {
+    name: 'else',
+    nameCH: '其它'
+  }
+]
+
+const reset = document.querySelector('input[name=reset]')
+const submit = document.querySelector('.login-form')
+submit.addEventListener('submit', getForm)
 
 function getForm(e) {
-  for (let i = 0; i < names.length; i++) {
-    const elements = document.querySelectorAll(`input[name=${names[i]}]`)
-    if (names[i] === 'list') {
-      checkList(names[i], elements, e)
+  for (let i = 0; i < inputArray.length; i++) {
+    e.preventDefault()
+    const elements = document.querySelectorAll(`input[name=${inputArray[i].name}]`)
+    if (inputArray[i].name === 'radio') {
+      checkRadio(inputArray[i].name, elements, e)
     } else {
-      checkContent(names[i], elements[0], e)
+      checkContent(inputArray[i].name, elements[0], e)
     }
   }
 
   const storage = window.localStorage
-
   if (storage.length >= 5) {
     // 排除狀況：4 個必要 + 1 個其他
-    if (storage.length !== 5 || storage.else === undefined) {
+    if (storage.length !== 5 || storage.else === '') {
       let formText = ''
 
       // 表單資料
       for (let i = 0; i < storage.length; i++) {
-        if (storage[names[i]] !== '') {
-          formText += `${namesCH[i]} : ${storage[names[i]]}\n`
+        if (storage[inputArray[i].name] !== '') {
+          formText += `${inputArray[i].nameCH} : ${storage[inputArray[i].name]}\n`
         }
       }
       alert(formText)
+      reset.click()
     }
   }
   localStorage.clear()
@@ -39,7 +66,6 @@ function checkContent(name, element, e) {
 
   if (content === '' && name !== 'else') {
     alertBlock.classList.remove('alert-block--hidden')
-    e.preventDefault()
   } else {
     if (name === 'email' && !isEmail(content)) {
       alertBlock.querySelector('span').innerText = '請輸入正確的電子郵件\n(例如：example＠example.com)'
@@ -62,27 +88,16 @@ function checkContent(name, element, e) {
 }
 
 // 判斷報名類型是否勾選
-function checkList(name, elements, e) {
-  // 用來判斷是否有勾選，1 為勾選，0 未勾選
-  let count = 0
+function checkRadio(name, elements, e) {
+  const alertBlock = document.querySelector('.list .alert-block')
 
-  // 依序檢查是否有勾選
-  for (let i = 0; i < elements.length; i++) {
-    const content = elements[i].nextElementSibling.innerText
-    const alertBlock = elements[i].closest('.list').querySelector('.alert-block')
-    if (elements[i].checked) count++
-    if (count) {
-      alertBlock.classList.add('alert-block--hidden')
-      window.localStorage.setItem(name, content)
-
-      // 確認有勾選即跳出函式
-      return
-
-    // 判斷到最後一項在顯示提示
-    } else if (i === elements.length - 1) {
-      alertBlock.classList.remove('alert-block--hidden')
-      e.preventDefault()
-    }
+  // 檢查是否有勾選
+  if ([...elements].some((element) => element.checked)) {
+    alertBlock.classList.add('alert-block--hidden')
+    const content = document.querySelector('input[name=radio]:checked').nextElementSibling.innerText
+    window.localStorage.setItem(name, content)
+  } else {
+    alertBlock.classList.remove('alert-block--hidden')
   }
 }
 

@@ -94,6 +94,11 @@ input::placeholder {
 	color: #afafaf;
 }
 
+input[name=reset] {
+	display: none;
+}
+
+
 /*繪製下方版權區塊*/
 .navbar {
 	border-top: 2px solid yellow;
