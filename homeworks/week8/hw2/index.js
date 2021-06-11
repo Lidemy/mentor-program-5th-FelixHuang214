@@ -10,8 +10,8 @@ const template = `
   </div>
 </a>
 `
-const baseURL = 'https://api.twitch.tv/kraken/'
-const clientID = 'e24g5pbpbi1yvkbjnb266hg75ypqw4'
+
+const inputArray = ['https://api.twitch.tv/kraken/', 'e24g5pbpbi1yvkbjnb266hg75ypqw4']
 let offset = 0
 
 window.onload = function() {
@@ -78,8 +78,8 @@ function getMoreStreams(gameName) {
 
 function getStreams(gameName, cb, offset) {
   const request = new XMLHttpRequest()
-  request.open('GET', `${baseURL}streams?game=${encodeURIComponent(gameName)}&limit=20&offset=${offset}`)
-  request.setRequestHeader('Client-ID', clientID)
+  request.open('GET', `${inputArray[0]}streams?game=${encodeURIComponent(gameName)}&limit=20&offset=${offset}`)
+  request.setRequestHeader('Client-ID', inputArray[1])
   request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json')
   request.onload = () => {
     if (request.status >= 200 && request.status < 400) {
@@ -109,8 +109,8 @@ function getStreams(gameName, cb, offset) {
 
 function getTopGames(cb) {
   const request = new XMLHttpRequest()
-  request.open('GET', `${baseURL}games/top?limit=5`, true)
-  request.setRequestHeader('Client-ID', clientID)
+  request.open('GET', `${inputArray[0]}games/top?limit=5`, true)
+  request.setRequestHeader('Client-ID', inputArray[1])
   request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json')
   request.onload = () => {
     if (request.status >= 200 && request.status < 400) {
