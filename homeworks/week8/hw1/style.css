@@ -58,7 +58,43 @@ p {
 
 .banner {
   height: 767px;
+  position: relative;
 }
+
+.banner__img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: url(bg.jpg) center/cover no-repeat;
+  z-index: -1;
+}
+
+.first {
+  color: black;
+  background: url(bg_first.jpg) center/cover no-repeat;
+  z-index: auto;
+}
+
+.second {
+  color: white;
+  background: url(bg_second.jpg) center/cover no-repeat;
+  z-index: auto;
+}
+
+.third {
+  color: white;
+  background: url(bg_third.jpg) center/cover no-repeat;
+  z-index: auto;
+}
+
+.none {
+  color: white;
+  background: black;
+  z-index: auto;
+}
+
 
 .form {
   margin: 0 auto;

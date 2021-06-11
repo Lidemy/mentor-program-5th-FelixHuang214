@@ -12,26 +12,29 @@ const template = `
 `
 const baseURL = 'https://api.twitch.tv/kraken/'
 const clientID = 'e24g5pbpbi1yvkbjnb266hg75ypqw4'
+let offset = 0
 
 window.onload = function() {
   document.querySelector('.navbar__list')
     .addEventListener('click', (e) => {
       if (e.target.tagName.toLowerCase() === 'li') {
         const gameName = e.target.innerText
-        getStreams(gameName, appendStreams, 0)
+        offset = 0
+        getStreams(gameName, appendStreams, offset)
       }
     })
 
   document.querySelector('.btn-load')
     .addEventListener('click', (e) => {
       const gameName = document.querySelector('.section__game-name').innerText
-      const gameCount = document.querySelectorAll('.stream-block__stream').length
-      getStreams(gameName, appendStreams, gameCount)
+      getMoreStreams(gameName)
 
       // 100 條影片將按鈕隱藏
+      /*
       if (gameCount + 20 === 100) {
         document.querySelector('.btn-load').classList.add('btn--hide')
       }
+      */
     })
 
   getTopGames((topGames) => {
@@ -41,16 +44,17 @@ window.onload = function() {
       element.innerText = game.game.name
       document.querySelector('.navbar__list').appendChild(element)
     }
-    getStreams(topGames[0].game.name, appendStreams, 0)
+    getStreams(topGames[0].game.name, appendStreams, offset)
   })
 }
+/*
 function checkName(nameChange) {
   return nameChange
     .replace(/\s/, '%20')
 }
-
-function appendStreams(streams, getMoreStreams) {
-  if (!getMoreStreams) {
+*/
+function appendStreams(streams, haveOffset) {
+  if (!haveOffset) {
     document.querySelector('.stream-block').innerHTML = ''
   }
   streams.forEach((stream) => {
@@ -67,26 +71,40 @@ function appendStreams(streams, getMoreStreams) {
   })
 }
 
-function getStreams(gameName, cb, getMoreStreams) {
-  const request2 = new XMLHttpRequest()
-  request2.open('GET', `${baseURL}streams?game=${checkName(gameName)}&limit=${20 + getMoreStreams}`)
-  request2.setRequestHeader('Client-ID', clientID)
-  request2.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json')
-  request2.onload = () => {
-    if (request2.status >= 200 && request2.status < 400) {
+function getMoreStreams(gameName) {
+  offset += 20
+  getStreams(gameName, appendStreams, offset)
+}
+
+function getStreams(gameName, cb, offset) {
+  const request = new XMLHttpRequest()
+  request.open('GET', `${baseURL}streams?game=${encodeURIComponent(gameName)}&limit=20&offset=${offset}`)
+  request.setRequestHeader('Client-ID', clientID)
+  request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json')
+  request.onload = () => {
+    if (request.status >= 200 && request.status < 400) {
       document.querySelector('.section__game-name').innerText = gameName
-      const { streams } = JSON.parse(request2.responseText)
+      let streams
+      try {
+        streams = JSON.parse(request.responseText).streams
+      } catch (err) {
+        console.log('Error! 解析 STREAMS 資料錯誤！')
+        console.log('ERROR:', err)
+      }
+      cb(streams, offset)
+      /*
       if (getMoreStreams) {
         const newStreams = streams.slice(getMoreStreams, streams.length + 1)
         cb(newStreams, getMoreStreams)
       } else {
-        cb(streams, 0)
+        cb(streams) // , 0)
       }
+      */
     } else {
       alert('網路不穩請稍後再試！')
     }
   }
-  request2.send()
+  request.send()
 }
 
 function getTopGames(cb) {
@@ -96,7 +114,13 @@ function getTopGames(cb) {
   request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json')
   request.onload = () => {
     if (request.status >= 200 && request.status < 400) {
-      const topGames = JSON.parse(request.responseText).top
+      let topGames
+      try {
+        topGames = JSON.parse(request.responseText).top
+      } catch (err) {
+        console.log('Error! 解析 TOP GAME 資料錯誤！')
+        console.log('ERROR:', err)
+      }
       cb(topGames)
     } else {
       alert('網路不穩請稍後再試！')
