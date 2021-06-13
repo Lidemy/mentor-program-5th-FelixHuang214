@@ -112,7 +112,7 @@ header {
 .comment-block__comment {
   display: flex;
   background: #ade4e2;
-  height: 80px;
+  min-height: 80px;
   border-radius: 11px;
   margin-bottom: 20px;
   border: 1px solid #f7dfdf;  
