@@ -1,0 +1,242 @@
+body {
+  margin: 0;
+  background: #fdffe58f;
+}
+
+header {
+  text-align: center;
+  padding: 10px;
+  background: #f79d28c2;
+  color: #940808;
+}
+
+.board {
+  margin: 0px auto;
+  margin-top: 50px;
+  padding: 10px 30px;
+  background: #d4ebf5b5;
+  border-top: 10px solid #063e3da8;
+  width: 600px;
+  min-height: 150px;
+  position: relative;
+  border-radius: 10px;
+}
+
+.board__member-block {
+  position: absolute;
+  right: 0;
+  top: 12px;
+  padding: 0px 10px;
+}
+
+.member-block__btn {
+  padding: 5px 10px;
+  color: #070825;
+  margin: 10px;
+  background: #a8e2e2b0;
+  box-shadow: 2px 2px 4px 1px #676766;
+  border-radius: 5px;
+}
+
+.board__member-block > div:first-child{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  left: 10px;
+}
+
+.board__member-block > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+}
+
+
+/* 註冊頁面修正 */
+.board-regiser {
+  margin: 0px auto;
+  margin-top: 50px;
+  padding: 10px 30px;
+  background: #d4ebf5b5;
+  border-top: 10px solid #063e3da8;
+  width: 600px;
+  min-height: 170px;
+  position: relative;
+  border-radius: 10px;
+}
+
+.board__title-register {
+  letter-spacing: 10px;
+  margin-bottom: 0;
+  text-shadow: 2px 2px 2px #b7aeae;
+  color: #0b3a56;
+}
+
+.site-name {
+  font-size: 12px;
+  color: #747473;
+}
+
+.board__input-block span {
+  text-align: center;
+  color: #d80c0c;
+  font-size: 14px;
+}
+/*-------------*/
+
+.board__input-block input {
+  margin-bottom: 10px;
+}
+
+.board__title {
+  text-shadow: 2px 2px 2px #b7aeae;
+  color: #0b3a56;
+}
+
+.comment-block {
+  margin: 0px auto;
+  padding: 10px 30px;
+  background: #d4ebf5b5;
+  width: 600px;
+  min-height: 300px;
+  border-top: 2px solid white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.comment-block > div{
+  margin-top: 30px;
+  height: 50%;
+}
+
+.comment-block__comment {
+  display: flex;
+  background: #ade4e2;
+  height: 80px;
+  border-radius: 11px;
+  margin-bottom: 20px;
+  border: 1px solid #f7dfdf;  
+}
+
+.comment__avatar {
+  height: 60px;
+  width: 60px;
+  min-width: 60px;
+  border-radius: 50%;
+  background: #52b3b3;
+  left: -18px;
+  top: -10px;
+  position: relative;
+  border: 1px solid #0baf8e;
+}
+
+.comment__user-info {
+  padding: 10px 0px;
+}
+
+.comment__user-info span:first-child {
+  font-size: 16px;
+  color: #073e3d;
+}
+
+.comment__user-info span:nth-child(2) {
+  font-size: 13px;
+  color: #676766;
+}
+
+.user-info__talk {
+  word-break: break-word;
+  max-width: 515px;
+  color: black;
+}
+
+.content-input {
+  display: flex;
+  margin: 0 auto;
+  padding: 0px 30px;
+  background: #d4ebf5b5;
+  width: 600px;
+  position: relative;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  position: relative;
+}
+
+.content-input textarea {
+  border: 1px solid #94b5e2;
+  height: 20px;
+  width: 555px;
+  border-radius: 5px;
+  resize: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.content-input input {
+  position: absolute;
+  height: 25px;
+  background: #9acad6;
+  border: 1px solid #9acad6;
+  border-radius: 5px;
+}
+
+.content-input span {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  color: #d84242;
+  font-size: 14px;
+}
+
+.content-input input[type=button] {
+  background: #aba4a4;
+  color: #948c8cf2;
+}
+
+/*資訊欄區塊*/
+.board__upload {
+  position: absolute;
+  background: #9acad6;
+  height: 150px;
+  width: 214px;
+  right: 10%;
+  bottom: 0;
+  border-radius: 5px;
+}
+
+.nodisplay {
+  display: none;
+}
+
+.upload-body {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  display: inline-block;
+  padding: 9px 5px; 
+  background: #d4ebf5b5;
+  border: 1px dotted #26c4e6;
+  border-radius: 5px;
+  color: #c8c7cc;
+  z-index: 1;
+}
+
+h3 {
+  margin: 10px 0px 0px 10px;
+  position: relative;
+  letter-spacing: 10px;
+  color: #0b3a56;
+}
+
+.board__upload div {
+  margin-top: 14px;
+  margin-left: 10px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.board__upload span {
+  font-size: 12px;
+}
+/*------------------*/
+
