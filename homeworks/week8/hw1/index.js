@@ -10,16 +10,16 @@ document.querySelector('.btn').addEventListener('click', getData)
 // 取得伺服器資料後跳至結果頁面
 request.addEventListener('load', () => {
   if (request.status >= 200 && request.status < 400) {
-    const response = request.responseText
-    let resultData = {}
     try {
-      resultData = JSON.parse(response)
+      const response = request.responseText
+      const resultData = JSON.parse(response)
+      renderNewPage(resultData.prize)
     } catch (err) {
-      console.log('Error! 資料解析錯誤！')
-      console.log('ERROR:', err)
-      return
+      return console.log(`
+      Error! 資料解析錯誤！
+      ERROR: ${err}
+      `)
     }
-    renderNewPage(resultData.prize)
   } else {
     alert('系統不穩定，請再試一次')
   }

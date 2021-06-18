@@ -10,11 +10,12 @@ const template = `
   </div>
 </a>
 `
-
-const inputArray = ['https://api.twitch.tv/kraken/', 'e24g5pbpbi1yvkbjnb266hg75ypqw4']
+const baseURL = 'https://api.twitch.tv/kraken/'
+const clientID = 'e24g5pbpbi1yvkbjnb266hg75ypqw4'
+let isLoading = false
 let offset = 0
 
-window.onload = function() {
+window.onload = () => {
   document.querySelector('.navbar__list')
     .addEventListener('click', (e) => {
       if (e.target.tagName.toLowerCase() === 'li') {
@@ -23,19 +24,12 @@ window.onload = function() {
         getStreams(gameName, appendStreams, offset)
       }
     })
-
-  document.querySelector('.btn-load')
-    .addEventListener('click', (e) => {
-      const gameName = document.querySelector('.section__game-name').innerText
-      getMoreStreams(gameName)
-
-      // 100 條影片將按鈕隱藏
-      /*
-      if (gameCount + 20 === 100) {
-        document.querySelector('.btn-load').classList.add('btn--hide')
-      }
-      */
-    })
+  // 點擊按鈕載入 streams
+  // document.querySelector('.btn-load')
+  //   .addEventListener('click', (e) => {
+  //     const gameName = document.querySelector('.section__game-name').innerText
+  //     getMoreStreams(gameName)
+  //   })
 
   getTopGames((topGames) => {
     for (const game of topGames) {
@@ -46,60 +40,70 @@ window.onload = function() {
     }
     getStreams(topGames[0].game.name, appendStreams, offset)
   })
+
+  // 捲軸滑動載入 streams
+  window.addEventListener('scroll', (e) => {
+    const { lastChild } = document.querySelector('.stream-block').lastChild
+    const lastChildOffsetBottom = document.body.clientHeight - lastChild.offsetTop
+    // console.groupCollapsed('數值')
+    // console.log('最後一個元素到底部的距離: ', lastChildOffsetBottom)
+    // console.log('可視範圍的距離(視窗的長度): ', window.innerHeight)
+    // console.log('不可視範圍距離(拉條拉到最底): ', window.pageYOffset)
+    // console.log('body 的距離: ', document.body.clientHeight)
+    // console.groupEnd()
+    if (
+      window.innerHeight + window.pageYOffset >=
+        document.body.clientHeight - lastChildOffsetBottom
+    ) {
+      const gameName = document.querySelector('.section__game-name').innerText
+      getMoreStreams(gameName)
+    }
+  })
 }
-/*
-function checkName(nameChange) {
-  return nameChange
-    .replace(/\s/, '%20')
-}
-*/
-function appendStreams(streams, haveOffset) {
+
+const appendStreams = (streams, haveOffset) => {
   if (!haveOffset) {
     document.querySelector('.stream-block').innerHTML = ''
   }
   streams.forEach((stream) => {
     const element = document.createElement('div')
+    const { url, logo, status, displayName } = stream.channel
+    const { preview } = stream
     const html = template
-      .replace('$url', stream.channel.url)
-      .replace('$preview', stream.preview.large)
-      .replace('$logo', stream.channel.logo)
-      .replace('$status', stream.channel.status)
-      .replace('$channel', stream.channel.display_name)
+      .replace('$url', url)
+      .replace('$preview', preview.large)
+      .replace('$logo', logo)
+      .replace('$status', status)
+      .replace('$channel', displayName)
     element.classList.add('stream-block__stream')
     element.innerHTML = html
     document.querySelector('.stream-block').appendChild(element)
+    isLoading = false
   })
 }
 
-function getMoreStreams(gameName) {
+const getMoreStreams = (gameName) => {
+  if (isLoading) return
   offset += 20
   getStreams(gameName, appendStreams, offset)
+  isLoading = true
 }
 
-function getStreams(gameName, cb, offset) {
+const getStreams = (gameName, cb, offset) => {
   const request = new XMLHttpRequest()
-  request.open('GET', `${inputArray[0]}streams?game=${encodeURIComponent(gameName)}&limit=20&offset=${offset}`)
-  request.setRequestHeader('Client-ID', inputArray[1])
+  request.open('GET', `${baseURL}streams?game=${encodeURIComponent(gameName)}&limit=20&offset=${offset}`)
+  request.setRequestHeader('Client-ID', clientID)
   request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json')
   request.onload = () => {
     if (request.status >= 200 && request.status < 400) {
       document.querySelector('.section__game-name').innerText = gameName
-      let streams
       try {
-        streams = JSON.parse(request.responseText).streams
+        const { streams } = JSON.parse(request.responseText)
+        cb(streams, offset)
       } catch (err) {
         console.log('Error! 解析 STREAMS 資料錯誤！')
         console.log('ERROR:', err)
       }
-      cb(streams, offset)
-      /*
-      if (getMoreStreams) {
-        const newStreams = streams.slice(getMoreStreams, streams.length + 1)
-        cb(newStreams, getMoreStreams)
-      } else {
-        cb(streams) // , 0)
-      }
-      */
     } else {
       alert('網路不穩請稍後再試！')
     }
@@ -107,21 +111,22 @@ function getStreams(gameName, cb, offset) {
   request.send()
 }
 
-function getTopGames(cb) {
+const getTopGames = (cb) => {
   const request = new XMLHttpRequest()
-  request.open('GET', `${inputArray[0]}games/top?limit=5`, true)
-  request.setRequestHeader('Client-ID', inputArray[1])
+  request.open('GET', `${baseURL}games/top?limit=5`, true)
+  request.setRequestHeader('Client-ID', clientID)
   request.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json')
   request.onload = () => {
     if (request.status >= 200 && request.status < 400) {
-      let topGames
       try {
-        topGames = JSON.parse(request.responseText).top
+        const { top } = JSON.parse(request.responseText)
+        cb(top)
       } catch (err) {
-        console.log('Error! 解析 TOP GAME 資料錯誤！')
-        console.log('ERROR:', err)
+        return console.log(`
+        Error! 解析 TOP GAME 資料錯誤！
+        ERROR: ${err}
+        `)
       }
-      cb(topGames)
     } else {
       alert('網路不穩請稍後再試！')
     }
