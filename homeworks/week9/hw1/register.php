@@ -1,5 +1,12 @@
+<?php
+  require_once('utils.php');
+
+  if($_GET['errCode']) { 
+    $msg = errCodeText($_GET['errCode']);
+  }
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="style.css" />
@@ -21,18 +28,6 @@
         <div>帳號：<input type="text" name="username" /></div>
         <div>密碼：<input type="password" name="password" /></div>
         <div>暱稱：<input type="text" name="nickname"/></div>
-        <?php 
-          if($_GET['errCode']) { 
-            $code = $_GET['errCode'];
-            $msg = '未知錯誤請洽網站管理員';
-            if ($code === '1') {
-              $msg = '輸入內容不可為空';
-            }
-            if ($code === '2') {
-              $msg = '帳密及暱稱重複，請重新輸入';
-            }
-          }
-        ?>
         <span><?php echo $msg; ?></span>
       </div>
     </form>

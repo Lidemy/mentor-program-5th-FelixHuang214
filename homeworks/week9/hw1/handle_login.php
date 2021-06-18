@@ -14,18 +14,16 @@
   $password = $_POST['password'];
 
   $sql = sprintf(
-    "SELECT * FROM eshau_users WHERE username='%s' AND password='%s'",
+    "SELECT * FROM users WHERE username='%s' AND password='%s'",
     $username,
     $password
   );
 
   $result = $conn->query($sql);
-  if (!$result->num_rows >= 1) {
-    header("Location: index.php?errCode=2");
-  } else {
+  if ($result->num_rows === 1) {
     $_SESSION['username'] = $username;
     header("Location: index.php");
+  } else {
+    header("Location: index.php?errCode=2");
   }
-
-
 ?>

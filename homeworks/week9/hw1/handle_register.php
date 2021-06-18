@@ -17,7 +17,7 @@
 
   // 將會員資料加入資料庫
   $sql = sprintf(
-    "INSERT INTO eshau_users(username, password, nickname)
+    "INSERT INTO users(username, password, nickname)
       VALUES('%s', '%s', '%s')",
     $username,
     $password,
@@ -27,7 +27,7 @@
 
   // 判斷輸入的值是否符合資料庫條件
   if (!$result) {
-    header("Location: register.php?errCode=2");
+    header("Location: register.php?errCode=3");
   } else {
     header("Location: index.php");
   }

@@ -19,7 +19,8 @@ header {
   width: 600px;
   min-height: 150px;
   position: relative;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .board__member-block {
@@ -53,6 +54,7 @@ header {
 
 
 /* 註冊頁面修正 */
+
 .board-regiser {
   margin: 0px auto;
   margin-top: 50px;
@@ -84,8 +86,8 @@ header {
 }
 /*-------------*/
 
-.board__input-block input {
-  margin-bottom: 10px;
+.board__input-block > div + div {
+  margin-top: 10px;
 }
 
 .board__title {
@@ -153,10 +155,10 @@ header {
 .content-input {
   display: flex;
   margin: 0 auto;
-  padding: 0px 30px;
+  padding: 10px 30px;
   background: #d4ebf5b5;
   width: 600px;
-  position: relative;
+  height: 94px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   position: relative;
@@ -164,8 +166,8 @@ header {
 
 .content-input textarea {
   border: 1px solid #94b5e2;
-  height: 20px;
-  width: 555px;
+  height: 50px;
+  width: 600px;
   border-radius: 5px;
   resize: none;
   outline: none;
@@ -173,11 +175,18 @@ header {
 }
 
 .content-input input {
-  position: absolute;
-  height: 25px;
-  background: #9acad6;
-  border: 1px solid #9acad6;
-  border-radius: 5px;
+  background: #9deaae;
+  border: none;
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 3px;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  height: 36px;
+}
+
+.content-input input:hover {
+  cursor: pointer;
+  background: #67d87f;
 }
 
 .content-input span {
@@ -238,5 +247,35 @@ h3 {
 .board__upload span {
   font-size: 12px;
 }
-/*------------------*/
+
+.emoji {
+  display: flex;
+  align-items: center;
+  cursor: auto;
+  background: #f1f9cd;
+  border-radius: 18px;
+  white-space: nowrap;
+  position: absolute;
+}
+
+.emoji--hide {
+  display: none;
+  
+}
+
+.emoji span {
+  display: inline-block;
+  font-size: 25px;
+  margin: 0px 5px;
+  transition: all 0.1s;
+
+}
+
+.emoji span:hover {
+  transform: scale(1.2, 1.2);
+  transition: all 0.1s;
+  cursor: pointer;
+}
+
+
 
