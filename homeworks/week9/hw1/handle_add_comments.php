@@ -1,17 +1,16 @@
 <?php
   session_start();
   require_once('conn.php');
-
+  print_r($_POST['content']);
   if (empty($_POST['content'])) {
-    header('index.php?errCode=3');
+    header("Location: index.php?errCode=1");
     die();
   }
-
-  $content = $_POST['content'];
+  $content = htmlentities($_POST['content']);
   // 取得 nickname
   $username = $_SESSION['username'];
   $sql = sprintf(
-    "SELECT * FROM eshau_users WHERE username='%s'",
+    "SELECT * FROM users WHERE username='%s'",
     $username
   );
   $result = $conn->query($sql);
@@ -19,11 +18,15 @@
   $nickname = $row['nickname'];
   // 將資料加入資料庫
   $sql = sprintf(
-    "INSERT INTO eshau_comments(nickname, content)
+    "INSERT INTO comments(nickname, content)
       VALUES('%s', '%s')",
     $nickname,
     $content
   );
   $result = $conn->query($sql);
-  header("Location: index.php")
+  if(!$result) {
+    header("Location: index.php?errCode=3");
+  } else {
+    header("Location: index.php");
+  }
 ?>
