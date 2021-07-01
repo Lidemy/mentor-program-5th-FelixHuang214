@@ -10,7 +10,6 @@
     header('Location: ../register.php?err_code=1');
     die();
   }
-
   $username = $_POST['username'];
   $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
   print_r($password);

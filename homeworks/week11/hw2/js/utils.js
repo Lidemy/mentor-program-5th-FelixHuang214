@@ -1,11 +1,3 @@
-// 用來計算文字長度(網路上抄的，未完全理解)
-export function displayTextWidth(text, font) {
-  const canvas = document.createElement('canvas') || (displayTextWidth.canvas = document.created('canvas'))
-  const context = canvas.getContext('2d')
-  context.font = font
-  const metrics = context.measureText(text)
-  return metrics.width
-}
 // 碰到元素含有「user-data」及跳出否則繼續對每個內容元素做顯示或隱藏
 export function isNextElementHide(startElem, className) {
   // 元素含有「user-data」或下面沒有內容要跳出

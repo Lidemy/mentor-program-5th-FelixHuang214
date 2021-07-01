@@ -6,14 +6,15 @@
   if ($_SESSION['username']) {
     $username = $_SESSION['username'];
     // 從資料庫判斷使用者的權限
-    $sql = sprintf(
-      "SELECT authority FROM eshau_users WHERE username='%s'",
-      $username
+    $stmt = $conn->prepare(
+      'SELECT authority FROM eshau_users WHERE username=?'
     );
-    $result = $conn->query($sql);
+    $stmt->bind_param('s', $username);
+    $result = $stmt->execute();
     if (!$result) {
       die('Error:' . $conn->error);
     }
+    $result = $stmt->get_result();
     $authority = $result->fetch_assoc()['authority'];
     $authority = json_decode($authority, true);
     $current_status = key($authority);
@@ -199,11 +200,8 @@
     import * as utils from './models/utils.js'
     const textarea = document.getElementById('myTextarea')
     const emoji = document.querySelector('.emoji')
-
-    // 照片上傳及提交檔案
-    document.getElementById('file').onchange = function(e) {
-      document.getElementById('data-update').submit()
-    }
+    const file = document.querySelector('#file')
+    
     
     function init() {
       // 留言
@@ -218,6 +216,12 @@
         textarea.addEventListener('focus', function() {
           emoji.classList.remove('emoji--hide')
         })
+      }
+      // 照片上傳及提交檔案
+      if (file) {
+        document.getElementById('file').onchange = function() {
+          document.getElementById('data-update').submit()
+        }
       }
       const originNickname = document.querySelector('.origin-nickname')
       const updateNickname = document.querySelector('input[name=update_nickname]')
@@ -234,14 +238,12 @@
         document.getElementById('data-update').submit()
         updateNickname.click()
       })
-
       // 點擊功能顯示按鈕
       const clickBtn = document.querySelector('.button-block__member-btn')
       clickBtn.addEventListener('click', function() {
         clickBtn.classList.toggle('member-btn--click')
       })
     }
-
     document.addEventListener('DOMContentLoaded', init)
   </script>
 </body>

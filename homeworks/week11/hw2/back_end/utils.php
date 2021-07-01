@@ -1,17 +1,5 @@
 <?php
   require_once('conn.php');
-  // 取得圖片 src 後的字串(baseURL)，資料庫內有資料則回傳該字串；反之則回傳空字串
-  function getHeadShot($username) {
-    global $conn;
-    $result = '';
-    $getImageInfo = $conn->query("SELECT image FROM image WHERE username='$username'");
-    if ($getImageInfo->num_rows === 1) {
-      $img = $getImageInfo->fetch_assoc()['image'];
-      $type = $getImageInfo->fetch_assoc()['type'];
-      $result = 'data:' . $type . ';base64,' . $img;
-    }
-    return $result;
-  }
 
   function errCodeText($code) {
     switch ($code) 
@@ -50,23 +38,6 @@
 
   function escape($str) {
     return htmlspecialchars($str, ENT_QUOTES);
-  }
-
-  // 控制 admin_page 選擇權限的夏拉清單
-  function AthorityChoice($authority) {
-    $inputArray = array(
-      'normal'=> '<option value="normal">normal</option>',
-      'ban'=> '<option value="ban">ban</option>',
-      'admin'=> '<option value="admin">admin</option>'
-    );
-    $result = '<option value="' . $authority . '" selected>' .
-      $authority . '</option>';
-    foreach ($inputArray as $key => $value) {
-      if ($key !== $authority) {
-        $result = $result . $value;
-      }
-    }
-    return $result;
   }
   
   // 設定權限，回傳 array

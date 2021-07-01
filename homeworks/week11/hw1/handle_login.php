@@ -20,9 +20,8 @@
   if (!$result) {
     die($conn->error);
   }
-
-  // 取得結果
   $result = $stmt->get_result();
+    // 資料庫沒有使用者資料
   if ($result->num_rows === 0) {
     header("Location: index.php?errCode=2");
     exit();

@@ -1,10 +1,15 @@
 <?php
   session_start();
+  require_once('./back_end/utils.php');
   // 未登入
   if (empty($_SESSION['username'])) {
     header('Location: index.php');
     die();
   }
+  if (!empty($_GET['err_code'])) {
+    $msg = errCodeText($_GET['err_code']);
+  }
+  $username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,20 +33,14 @@
       </div>
       <div class="navbar__member-info">
         <a href="admin.php">管理後台</a>
-        <?php if($_SESSION['username']) { ?>
-          <a href="./back_end/handle_logout.php">登出</a>
-        <?php } else { ?>
-          <a href="./login.php">登入</a>
-        <?php } ?>
+        <a href="./back_end/handle_logout.php">登出</a>
       </div>
     </div>
   </nav>
   <header class="header">
     <p>存放技術之地-新增文章</p>
     <?php 
-      if ($is_login) { 
-        echo '<p>Hello, '. $username .'!</p>';
-      }
+      echo '<p>Hello, '. escape($username) .'!</p>';
     ?>
     <p>Welcome to my blog</p>
   </header>
@@ -74,4 +73,12 @@
     select.firstElementChild.disabled = true
   })
 </script>
+<?php if (@$msg) { ?>
+  <script>
+    window.onload = function() { 
+      window.alert('<?php echo $msg;  ?>')
+      window.location = './add_article.php'
+    }
+  </script>
+<?php } ?>
 </html>
