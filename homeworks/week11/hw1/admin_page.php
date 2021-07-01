@@ -87,7 +87,7 @@
         <?php } ?>
         <tr class="comment-data nodisplay">
           <td><?php echo escape($row['content_id']); ?></td>
-          <td class="words-area" colspan="2"><?php echo $row['content']; ?></td>
+          <td class="words-area" colspan="2"><?php echo escape($row['content']); ?></td>
           <td>
             <?php
               if ($row['content_deleted'] === 1) {

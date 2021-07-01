@@ -93,7 +93,7 @@
         }
         $row = $result->fetch_assoc();
       ?>
-      <textarea id="myTextarea" rows="3" name="content"><?php echo $row['content']; ?></textarea>
+      <textarea id="myTextarea" rows="3" name="content"><?php echo escape($row['content']); ?></textarea>
       <input type="hidden" name="id" value="<?php echo $id; ?>" />
         <?php if ($username) { ?>
           <div class="emoji emoji--hide"></div>
