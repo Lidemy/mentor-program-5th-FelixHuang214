@@ -4,12 +4,15 @@
   function getHeadShot($username) {
     global $conn;
     $result = '';
-    $sql = sprintf(
-      "SELECT image FROM eshau_headshot WHERE username='%s'",
-      $username
+    $stmt = $conn->prepare(
+      'SELECT image FROM eshau_headshot WHERE username=?'
     );
-    $getImageInfo = $conn->query($sql);
-
+    $stmt->bind_param('s', $username);
+    $getImageInfo = $stmt->execute();
+    if (!$getImageInfo) {
+      die('Error: '. $conn->error);
+    }
+    $getImageInfo = $stmt->get_result();
     if ($getImageInfo->num_rows === 1) {
       $img = $getImageInfo->fetch_assoc()['image'];
       $type = $getImageInfo->fetch_assoc()['type'];

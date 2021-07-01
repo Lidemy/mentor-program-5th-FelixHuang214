@@ -64,9 +64,9 @@
       ?>
       <form name="user-data" action="handle_userdata.php">
         <tr class="user-data">
-          <td><?php echo $row['user_id']; ?></td>
-          <td><?php echo $row['username']; ?></td>
-          <td><?php echo $row['nickname']; ?></td>
+          <td><?php echo escape($row['user_id']); ?></td>
+          <td><?php echo escape($row['username']); ?></td>
+          <td><?php echo escape($row['nickname']); ?></td>
           <td class="authority">
             <select class="authority-choice" onchange="this.form.submit()" name="choice">
               <?php
@@ -86,7 +86,7 @@
         </tr>
         <?php } ?>
         <tr class="comment-data nodisplay">
-          <td><?php echo $row['content_id']; ?></td>
+          <td><?php echo escape($row['content_id']); ?></td>
           <td class="words-area" colspan="2"><?php echo $row['content']; ?></td>
           <td>
             <?php

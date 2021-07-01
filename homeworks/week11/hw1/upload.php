@@ -25,15 +25,14 @@
   } else {
     $username = $_SESSION['username'];
     if ($nickname !== getNickname($username)) {
-      $sql = "UPDATE eshau_users SET nickname=? WHERE username=?";
-      $stmt = $conn->prepare($sql);
+      $stmt = $conn->prepare('UPDATE eshau_users SET nickname=? WHERE username=?');
       $stmt->bind_param('ss', $nickname, $username);
       $result = $stmt->execute();
       if (!$result) {
         die('Error:' . $conn->error);
       }
       header("Location: index.php");
-      exit();
+      die();
     }
     $type = $_FILES['file']['type'];
     $tmpname = $_FILES['file']['tmp_name'];
@@ -64,30 +63,39 @@
       imagedestroy($rsrScl);
       // print_r($tmpname);
       $file = fopen($tmpname, 'rb');
-      $fileContent = fread($file, filesize($tmpname));
+      $file_content = fread($file, filesize($tmpname));
       // print_r(filesize($tmpname));
-      // print_r($fileContent);
+      // print_r($file_content);
       fclose($file);
-      $fileContent = base64_encode($fileContent);
+      $file_content = base64_encode($file_content);
       // 檢查資料庫是否已有圖片
-      $check = $conn->query("SELECT eshau_headshot FROM image WHERE username='$username'");
-      if ($check->num_rows === 1) {
-        $sql = sprintf(
-        "UPDATE eshau_headshot SET image='%s', type='%s' WHERE username='%s'",
-        $fileContent,
-        $type,
-        $username
-        );
-      } else {
-        $sql = sprintf(
-        "INSERT INTO eshau_headshot(image, username, type)
-          VALUES('%s', '%s', '%s')",
-        $fileContent,
-        $username,
-        $type
-        );
+      $stmt = $conn->prepare(
+        'SELECT image FROM eshau_headshot WHERE username=?'
+      );
+      $stmt->bind_param('s', $username);
+      $check = $stmt->execute();
+      if (!$check) {
+        header('Location: index.php?errCode=3');
+        die();
       }
-      $result = $conn->query($sql);
+      $check = $stmt->get_result();
+      if ($check->num_rows === 1) {
+        $stmt = $conn->prepare(
+          'UPDATE eshau_headshot SET image=?, type=? WHERE username=?'
+        );
+        $stmt->bind_param('sss', $file_content, $type, $username);
+      } else {
+        $stmt = $conn->prepare(
+          'INSERT INTO eshau_headshot(image, username, type)
+            VALUES(?, ?, ?)'
+        );
+        $stmt->bind_param('sss', $file_content, $type, $username);
+      }
+      $result = $stmt->execute();
+      if (!$result) {
+        header('Location: index.php?errCode=3');
+        die();
+      }
       header("Location: index.php");
       //$check = move_uploaded_file($tmpname, 'upload/' . $username . $type);
     } else {

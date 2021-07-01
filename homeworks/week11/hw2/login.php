@@ -50,7 +50,7 @@
       <p>PASSWORD</p>
       <input class="login-form__password" type="password" name="password" />
       <?php if ($is_login) { ?>
-        <div class=login-form__desc-text>您好，<?php echo $username. ' '; ?>您已登入</div>
+        <div class=login-form__desc-text>您好，<?php echo escape($username). ' '; ?>您已登入</div>
       <?php } else { ?>
         <input class="login-form__submit" type="submit" value="SIGN IN" name="submit" />
       <?php } ?>

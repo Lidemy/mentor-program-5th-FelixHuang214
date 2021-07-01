@@ -97,7 +97,7 @@
     <p>存放技術之地-後台</p>
     <?php 
       if ($is_login) { 
-        echo '<p>Hello, '. $username .'!</p>';
+        echo '<p>Hello, '. escape($username) .'!</p>';
       }
     ?>
     <p>Welcome to my blog</p>
