@@ -2,12 +2,12 @@
   session_start();
   require_once('conn.php');
   require_once('utils.php');
+  
   // 未登入
   if (empty($_SESSION['username'])) {
     header('Location: ../index.php');
     die();
   }
-
   $username = $_SESSION['username'];
   $authority = getAuthority($username);
   $id = intval($_GET['id']);
@@ -24,8 +24,8 @@
   }
   $result = $stmt->execute();
   if (!$result) {
-    header('Location: admin.php');
+    header('Location: ../admin.php?err_code=5');
     die();
   }
-  header('Location: ../admin.php');
+  header("Location: ../index.php");
 ?>

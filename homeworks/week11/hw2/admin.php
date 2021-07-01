@@ -12,7 +12,6 @@
   }
   // admin 可以管理所有文章，其他使用者只能管理自己的文章
   $username = $_SESSION['username'];
-  $is_login = true;
   $authority = getAuthority($username);
   if ($authority === 'admin') {
     $result = $conn->query(
@@ -28,7 +27,7 @@
   $row = $result->fetch_assoc();
   $count = $row['count'];
   $page = 1;
-  if ($_GET['page']) {
+  if (!empty($_GET['page'])) {
     $page = intval($_GET['page']);
   }
   // 頁面可顯示 20 篇文章
@@ -96,9 +95,7 @@
   <header class="header">
     <p>存放技術之地-後台</p>
     <?php 
-      if ($is_login) { 
-        echo '<p>Hello, '. escape($username) .'!</p>';
-      }
+      echo '<p>Hello, '. escape($username) .'!</p>';
     ?>
     <p>Welcome to my blog</p>
   </header>

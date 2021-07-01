@@ -17,7 +17,7 @@
   $page = 1;
   
   // 登入才能瀏覽第二頁
-  if (!empty($_GET['page']) && $is_login) {
+  if (!empty($_GET['page']) && @$is_login) {
     $page = intval($_GET['page']);
   }
   // 控制文章一頁數量
@@ -60,14 +60,14 @@
     </a>
     <div class="navbar__info-block">
       <div class="navbar__article-info">
-        <?php if ($is_login) { ?>
+        <?php if (@$is_login) { ?>
         <a>文章列表</a>
         <a>分類專區</a>
           <a>關於我</a>
         <?php } ?>
       </div>
       <div class="navbar__member-info">
-        <?php if ($is_login) { ?>
+        <?php if (@$is_login) { ?>
           <a href="add_article.php">新增文章</a>
           <a href="admin.php">管理後台</a>
           <a href="./back_end/handle_logout.php">登出</a>
@@ -81,7 +81,7 @@
   <header class="header">
     <p>存放技術之地</p>
     <?php 
-      if ($is_login) { 
+      if (@$is_login) { 
         echo '<p>Hello, '. escape($username) .'!</p>';
       }
     ?>
@@ -89,7 +89,7 @@
   </header>
   <main class="article">
     <form class="article__form">
-      <?php if ($is_login) { ?>
+      <?php if (@$is_login) { ?>
         <div class="article__page">
           <a class="prev" href="?page=<?php if ($page !== 1) {
             echo $page - 1; } else { echo $page; } ?>">
@@ -124,7 +124,7 @@
               <div class="article__type"><?php echo $rows['type']; ?></div>
               <p><?php echo escape($rows['title']); ?></p>
             </div>
-            <?php if ($is_login) { ?>
+            <?php if (@$is_login) { ?>
               <div class="article__btn">
                 <?php if ($authority === 'admin' || $username === $rows['username']) { ?>
                   <a class="article__edit-btn" href="edit.php?id=<?php echo $rows['id']; ?>">編輯</a>
@@ -144,7 +144,7 @@
           </a>
         </div>
       <?php } ?>
-      <?php if ($is_login) { ?>
+      <?php if (@$is_login) { ?>
         <div class="article__page">
           <a class="prev" href="?page=<?php if ($page !== 1) {
             echo $page - 1; } else { echo $page; } ?>">

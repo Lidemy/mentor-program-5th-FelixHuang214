@@ -10,7 +10,6 @@
     header('Location: ../login.php?err_code=1');
     die();
   }
-
   $username = $_POST['username'];
   $password = $_POST['password'];
   // 在資料庫搜尋該帳戶

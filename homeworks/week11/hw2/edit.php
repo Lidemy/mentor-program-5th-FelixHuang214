@@ -10,10 +10,13 @@
     header('Location: index.php');
     die();
   }
+  if (!empty($_GET['err_code'])) {
+    $msg = errCodeText($_GET['err_code']);
+  }
   $_SESSION['res_url'] = $_SERVER['HTTP_REFERER'];
   $username = $_SESSION['username'];
   $authority = getAuthority($username);
-  $id = intval($_GET['id']);
+  $id = intval($_GET['id']);  
   // admin 可以編輯所有文章，其他使用者只能編輯自己的文章
   if ($authority === 'admin') {
     $stmt = $conn->prepare(
@@ -61,20 +64,14 @@
       </div>
       <div class="navbar__member-info">
         <a href="admin.php">管理後台</a>
-        <?php if($_SESSION['username']) { ?>
-          <a href="./back_end/handle_logout.php">登出</a>
-        <?php } else { ?>
-          <a href="./login.php">登入</a>
-        <?php } ?>
+        <a href="./back_end/handle_logout.php">登出</a>
       </div>
     </div>
   </nav>
   <header class="header">
     <p>存放技術之地-修改文章</p>
     <?php 
-      if ($is_login) { 
-        echo '<p>Hello, '. escape($username) .'!</p>';
-      }
+      echo '<p>Hello, '. escape($username) .'!</p>';
     ?>
     <p>Welcome to my blog</p>
   </header>
@@ -109,4 +106,12 @@
     document.querySelector('input[name=title]').value = title
   }
 </script>
+<?php if (@$msg) { ?>
+  <script>
+    window.onload = function() { 
+      window.alert('<?php echo $msg;  ?>')
+      window.location = './edit.php'
+    }
+  </script>
+<?php } ?>
 </html>

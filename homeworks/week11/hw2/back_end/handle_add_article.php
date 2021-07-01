@@ -3,8 +3,8 @@
   require_once('conn.php');
   require_once('utils.php');
 
+  // 未登入
   if (empty($_SESSION['username'])) {
-    // 未登入
     header('Location: ../index.php');
     die();
   }
@@ -13,7 +13,7 @@
     empty($_POST['title']) ||
     empty($_POST['type'])
   ) {
-    header('Location: ../add_article.php');
+    header('Location: ../add_article.php?err_code=1');
     die();
   }
 
@@ -29,9 +29,9 @@
   $result = $stmt->execute();
   if (!$result) {
     // 未成功將資料匯入資料庫
-    //header('Location: ../add_article.php');
+    header('Location: ../add_article.php?err_code=5');
     die('Error: ' . $conn->error);
   }
-  header('Location: ../index.php');
+  header('Location: ../index.php?');
 
 ?>

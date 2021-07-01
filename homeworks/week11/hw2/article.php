@@ -43,14 +43,14 @@
     </a>
     <div class="navbar__info-block">
       <div class="navbar__article-info">
-        <?php if ($is_login) { ?>
+        <?php if (@$is_login) { ?>
           <a>文章列表</a>
           <a>分類專區</a>
           <a>關於我</a>
         <?php } ?>
       </div>
       <div class="navbar__member-info">
-        <?php if ($is_login) { ?>
+        <?php if (@$is_login) { ?>
           <a href="add_article.php">新增文章</a>
           <a href="admin.php">管理後台</a>
           <a href="./back_end/handle_logout.php">登出</a>
@@ -64,7 +64,7 @@
   <header class="header">
     <p>存放技術之地</p>
     <?php 
-      if ($is_login) { 
+      if (@$is_login) { 
         echo '<p>Hello, '. escape($username) .'!</p>';
       }
     ?>
