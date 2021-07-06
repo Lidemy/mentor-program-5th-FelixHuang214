@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script>
+    const inputCommentArray = {
+      isLoad: false,
+      appendDOM: null,
+      isPrepend: false,
+      options: {
+        type: 'POST',
+        url: 'http://localhost/eshau/week12/hw1/comment_api.php?site_key=eshau',
+        data: {
+          offset: 0,
+        }
+      },
+      getCommentsFromAPI: function(isGetMore) {
+        // 阻擋多次載入
+        if (this.isLoad) {          
+          return false
+        } else {
+          this.isLoad = true
+        }
+        if (isGetMore){
+          this.options.data.offset += 5
+          this.isLoad = true
+        }
+        $.ajax(this.options).done((data) => {
+          // 失敗
+          if (data.message !== 'success') {
+            alert(`${data.message}`)
+            return
+          }
+          const comments = data.discussions
+          for (let comment of comments) {
+            this.addCommentToDom(this.appendDOM, comment)
+          }
+          // 成功
+          controlBtn(data)
+          this.isLoad = false
+        })
+      },
+      addCommentToDom: function (DOM, comment) {
+        const html = `
+          <div class="card">
+            <div class="card-header">
+              <span class="badge bg-primary">@${escape(comment.nickname)}</span>
+            </div>
+            <div class="card-body">
+              <p class="card-text">${escape(comment.content)}</p>
+            </div>
+          </div>
+        `
+        if (this.isPrepend) {
+          DOM.prepend(html)
+        } else {
+          DOM.append(html)
+        }
+      }
+    }
+    // 將載入更多按紐移動至最下方或刪除按鈕
+    function controlBtn(data) {
+      if (data.content === 'all') {
+        $('.btn-load-more').parent().remove()
+        return
+      }
+      $('.comments').append($('.btn-load-more').parent())
+    }
+
+    function escape(toOutput) {
+      return toOutput
+        .replace(/\&/g, '&amp;')
+        .replace(/\</g, '&lt;')
+        .replace(/\>/g, '&gt;')
+        .replace(/\"/g, '&quot;')
+        .replace(/\'/g, '&#x27')
+        .replace(/\//g, '&#x2F');
+    }
+
+    $(document).ready(function() {
+      let comments = { ...inputCommentArray }
+      comments.appendDOM = $('.comments')
+      comments.getCommentsFromAPI()
+      // 新增留言
+      $('.add-comment-form').submit((e) => {
+        e.preventDefault()
+        const newOptions = {
+          type: 'POST',
+          url: 'http://localhost/eshau/week12/hw1/add_comment_api.php',
+          data: {
+            site_key: 'eshau',
+            nickname: $('input[name=nickname]').val(),
+            content: $('textarea[name=content]').val()
+          }
+        }
+        const newComment = { ...comments }
+        newComment.options = newOptions
+        newComment.isPrepend = true;
+        newComment.getCommentsFromAPI()
+        $('input[name=nickname]').val('')
+        $('textarea[name=content]').val('')
+
+      })
+      // 載入更多留言
+      $('.btn-load-more').click(function() {
+        comments.getCommentsFromAPI(true)
+      })
+    })
+  </script>
+  <title>Discussion</title>
+  <style>
+    .comments {
+      
+    }
+
+    .form-floating>label {
+      left: 12px;
+    }
+
+    .add-comment-form {
+      position: relative;
+    }
+
+    .add-comment-form > div {
+      position: absolute;
+    }
+
+    .add-comment-form > div:nth-child(2) {
+      top: 70px;
+    }
+
+    .add-comment-form > div:nth-child(3) {
+      top: 523px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    textarea {
+      height: calc(90vh - 100px);
+    }
+
+    .row {
+      justify-content: flex-end
+    }
+
+    .card + .card {
+      margin-top: 10px;
+    }
+
+    .comments {
+      max-height: calc(90vh - 56px);
+      min-height: 550px;
+      overflow: scroll;
+      word-break: break-word;
+      word-break: break-word;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media screen and (max-width: 768px) {
+
+      .add-comment-form > div:nth-child(1) {
+        margin-top: 1rem!important;
+      }
+
+      .add-comment-form > div {
+        position: relative;
+      }
+
+      .col-5 {
+        width: 100%;
+      }
+
+      .col-7 {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .add-comment-form > div:nth-child(2) {
+        top: 0;
+      }
+
+      .add-comment-form > div:nth-child(3) {
+        top: 10px;
+      }
+
+      .device-row {
+        flex-flow: column-reverse;
+      }
+
+      .row {
+        align-items: center;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-3">
+    <div class="row device-row">
+      <form class="row col-5 add-comment-form">
+        <div class="form-floating mb-3">
+          <input name="nickname" type="text" class="form-control" id="input-nickname" placeholder="name@example.com">
+          <label for="input-nickname">暱稱</label>
+        </div>
+        <div class="form-floating">
+          <textarea name="content" class="form-control input-content" placeholder="Leave a comment here" id="input-content" style="height: 443px"></textarea>
+          <label for="input-content">Comments</label>
+          
+        </div>
+        <div>
+          <input name="submit" type="submit" class="btn btn-outline-secondary" value="送出">
+        </div>
+      </form>
+      <div class="row col-7">
+        <div class="comments" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+          <div class="d-grid mt-2">
+            <button class="btn btn-primary btn-load-more" type="button">載入更多</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
