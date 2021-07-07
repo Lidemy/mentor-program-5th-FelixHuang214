@@ -1,0 +1,93 @@
+.form-floating>label {
+  left: 12px;
+}
+
+.add-comment-form {
+  position: relative;
+}
+
+.add-comment-form > div {
+  position: absolute;
+}
+
+.add-comment-form > div:nth-child(2) {
+  top: 70px;
+}
+
+.add-comment-form > div:nth-child(3) {
+  top: 523px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+textarea {
+  height: calc(90vh - 100px);
+}
+
+.row {
+  justify-content: flex-end
+}
+
+.card + .card {
+  margin-top: 10px;
+}
+
+.comments {
+  max-height: calc(90vh - 56px);
+  min-height: 550px;
+  overflow: scroll;
+  word-break: break-word;
+  word-break: break-word;
+}
+
+.card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 768px) {
+
+  .add-comment-form > div:nth-child(1) {
+    margin-top: 1rem!important;
+  }
+
+  .add-comment-form > div {
+    position: relative;
+  }
+
+  .col-5 {
+    width: 100%;
+  }
+
+  .col-7 {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .add-comment-form > div:nth-child(2) {
+    top: 0;
+  }
+
+  .add-comment-form > div:nth-child(3) {
+    top: 10px;
+  }
+
+  .device-row {
+    flex-flow: column-reverse;
+  }
+
+  .row {
+    align-items: center;
+  }
+
+}

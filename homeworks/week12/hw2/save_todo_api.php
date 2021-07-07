@@ -1,13 +1,14 @@
 <?php
   require_once('conn.php');
   header('Content-type:application/json;charset=utf-8');
+  header('Access-Control-Allow-Origin: *');
 
   if (empty($_POST['todo_data'])) {
-    $json = array(
+    $obj = array(
       'connect' => false,
       'message' => '資料傳輸錯誤'
      );
-    $response = json_encode($json);
+    $response = json_encode($obj);
     echo $response;
     die();
   }
@@ -18,21 +19,21 @@
   $stmt->bind_param('s', $todo_data);
   $result = $stmt->execute();
   if (!$result) {
-    $json = array(
+    $obj = array(
       'connect' => false,
       'message' => '資料傳輸錯誤'
     );
-    $response = json_encode($json);
-    echo $json;
+    $response = json_encode($obj);
+    echo $obj;
     die();
   }
   $id = $conn->insert_id;
-  $json = array(
+  $obj = array(
     'connect' => true,
     'message' => 'SUCCESS!',
     'id' => $id
 
   );
-  $response = json_encode($json);
+  $response = json_encode($obj);
   echo $response;
 ?>
