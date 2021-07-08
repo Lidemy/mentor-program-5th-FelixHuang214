@@ -61,18 +61,18 @@ const showContentStatus = (status) => {
   const items = $('.accordion')
   switch (status) {
     case 'done':
-      items.addClass(function() {
+      items.addClass(() => {
         if ($(this).hasClass('finish')) return 'origin-show'
       })
-      items.removeClass(function() {
+      items.removeClass(() => {
         if ($(this).hasClass('unfinish')) return 'origin-show'
       })
       break
     case 'undone':
-      items.addClass(function() {
+      items.addClass(() => {
         if ($(this).hasClass('unfinish')) return 'origin-show'
       })
-      items.removeClass(function() {
+      items.removeClass(() => {
         if ($(this).hasClass('finish')) return 'origin-show'
       })
       break
@@ -140,7 +140,7 @@ const saveTodoStatus = () => {
   return JSON.stringify(todoStatus)
 }
 // 將狀態呈現成網頁
-function parseJsonFromServer(obj) {
+const parseJsonFromServer = (obj) => {
   const container = $('.container')
   const contents = $('.contents')
   contents.html('')

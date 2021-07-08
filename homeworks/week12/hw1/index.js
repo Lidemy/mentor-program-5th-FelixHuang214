@@ -63,7 +63,6 @@ const controlBtn = (data) => {
   $('.comments').append($('.btn-load-more').parent())
 }
 
-/* eslint-disable no-alert, no-console */
 const escape = (toOutput) => {
   return toOutput
     .replace(/\&/g, '&amp;')
@@ -73,7 +72,6 @@ const escape = (toOutput) => {
     .replace(/\'/g, '&#x27')
     .replace(/\//g, '&#x2F')
 }
-/* eslint-enable no-alert, no-console */
 
 $(document).ready(() => {
   const comments = { ...CommentsControler }
