@@ -22,4 +22,4 @@ SPA 是利用 ajax <s>取得資料庫的資料後</s> 與 server 互動，再讓
 
 用 PHP 輸出內容時，server 會先計算畫面在整頁交給瀏覽器產生頁面，而當我們做編輯、刪除等動作時，頁面就會做跳轉，server 就必須在重新計算畫面，因為需要經常做這些工作因此對伺服器的負擔比較大，而這種方式稱為 Server Side Render。
 
-而這週我們用 ajax 與 server 做溝通 server 只需要將資料丟給我們，之後交給 javascript 來計算畫面，我們不需要跳轉頁面來拿取資料，對使用者的體驗及 server 的負擔會比較良好。
+而這週我們用 ajax 與 server 做溝通 server 只需要將資料丟給我們，之後交給 javascript 來計算畫面，我們不需要跳轉頁面來拿取資料，這種方式稱為 Single Page Application，對使用者的體驗及 server 的負擔會比較良好。
