@@ -1,0 +1,146 @@
+body {
+  background: #f8f9fa;
+}
+
+.container .title {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.title {
+  color: #0a58ca;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-btn {
+  position: relative;
+  padding: 0px 20px 16px 20px;
+}
+
+.btn-per-del, .btn-confirm {
+  position: absolute;
+  right: 20px;
+}
+
+.btn-confirm {
+  display: none;
+}
+
+.accordion-header {
+  position: relative;
+}
+
+.check-done {
+  top: 1rem;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  z-index: 10;
+  transform: translate(37%, 12%);
+  color: #198754;
+}
+
+.check-done:hover {
+  cursor: pointer;
+}
+
+.finish .check-done {
+  background: url(./check-circle-regular.svg);
+}
+
+.unfinish .check-done {
+  background: url(./circle-regular.svg);
+}
+
+
+.form-select {
+  color: #6c757d;
+}
+
+.form-select > option:not(:first-child) {
+  color: black;
+}
+
+.accordion-body {
+  position: relative;
+}
+
+.note {
+  padding: 16px 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  outline: 0;
+  border: 0;
+  resize: none;
+}
+
+.visiable {
+  visibility: hidden;
+}
+
+.status-edit .hide {
+  visibility: hidden;
+}
+
+.status-edit .show {
+  display: inline-block;
+}
+
+.dropdown-menu {
+  cursor: default;
+}
+
+.input-note-type {
+  cursor: default !important;
+}
+
+.accordion {
+  position: relative;
+  display: none;
+}
+
+.finish:before{
+  content: '';
+  position: absolute;
+  width: calc(100% - 24px);
+  height: 100%;
+  top: 0;
+  background: grey;
+  opacity: 0.3;
+  z-index: 2;
+}
+
+.accordion-button {
+  position: relative;
+  background: #e7f1ff !important;
+  color: #0c63e4;
+}
+
+.accordion-button:focus {
+  box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+}
+
+.origin-show {
+  display: block;
+}
+
+.origin-hide {
+  position: absolute;
+  display: none;
+}
+
+.edit-title {
+  background: #e7f1ff;
+  color: #0c63e4;
+}
+
+.note-words {
+  white-space: pre-line;
+}

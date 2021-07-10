@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./index.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css" />
+  <title>Todo</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand">Todo</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        </ul>
+        <div class="d-flex">
+          <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#btn-save">儲存</button>
+          <div class="modal fade" id="btn-save" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Warning</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                確定儲存內容嗎？
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-save__confirm" data-bs-dismiss="modal">確定</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row mt-4">
+      <h1 class="display-1 title">Todo</h1>
+    </div>
+    <!-- 輸入事項類型及標題 -->
+    <div class="row mt-2">
+      <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary dropdown-toggle dropdown-title input-note-type" type="button" data-bs-toggle="dropdown" aria-expanded="false">事項類型</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item">隨手紀錄</a></li>
+          <li><a class="dropdown-item">待辦事項</a></li>
+          <li><a class="dropdown-item">其它</a></li>
+        </ul>
+        <input type="text" class="form-control input-note-title" placeholder="輸入事項標題" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button name="submit" class="btn btn-outline-secondary" type="button" id="button-addon2">送出</button>
+      </div>
+    </div>
+    <!-- 顯示選取內容並刪除 -->
+    <div class="input-group">
+      <select class="form-select" aria-label="Default select example">
+        <option value='' selected>顯示所選內容(點擊刪除刪除所選內容)</option>
+        <option value="default">全部</option>
+        <option value="done">已完成</option>
+        <option value="undone">未完成</option>
+      </select>
+      <button type="button" class="btn btn-danger btn-all-del" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        刪除
+      </button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              你即將刪除所有內容！
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary btn-all-del__confirm" data-bs-dismiss="modal">確定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 內容 -->
+    <div class="row contents">
+      <div class="accordion unfinish" id="accordionExample">
+        <div class="bg-finish-cover"></div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <div class="check-box">
+              <div class="check-done"></div>
+            </div>
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c0" aria-expanded="true" aria-controls="collapseOne">
+              <span class="btn btn-warning btn-sm ms-4 me-2 note-type">類型</span>
+              <span class="note-title">標題</span>
+              <!-- 未完成(修改標題)
+              <input class="edit-title origin-hide" type="text" value="Accordion Item #1"/> -->
+            </button>
+          </h2>
+          <div id="c0" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <textarea class="note visiable"></textarea>
+              <p class="note-words">
+                1.新增內容必須選類型及輸入標題<br>
+                2.按編輯可變更內容，目前無法變更標題及事項類型<br>
+                3.勾選已完成會自動將內想收起，必須取消勾選才能更改內容<br>
+                4.上方刪除會依照所選內容做刪除<br>
+                5.右上角儲存會給一個網址(原網址後加?id=)可回到之前儲存的狀態<br>
+                6.導向的網址儲存後會更新內容<br>
+              </p>
+            </div>
+            <div class="card-btn mt-2">
+              <button type="button" class="btn btn-secondary btn-sm btn-edit hide">編輯</button>
+              <button type="button" class="btn btn-danger btn-sm btn-per-del hide" data-bs-toggle="modal" data-bs-target="#c0dle">刪除</button>
+              <button type="button" class="btn btn-secondary btn-sm btn-confirm show">確定</button>
+            </div>
+            <div class="modal fade" id="c0dle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    你即將刪除該項目！
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary btn-per-del__confirm" data-bs-dismiss="modal">確定</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
