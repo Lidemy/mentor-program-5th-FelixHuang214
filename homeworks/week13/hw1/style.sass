@@ -1,0 +1,336 @@
+$border-color: #9a9a9a
+$background-dark: #434343
+$background-light: #33cccc
+$color-white: white
+
+@mixin btn-hover($color, $background-color)
+  &:hover
+    background: $background-color
+    color: $color
+    cursor: pointer
+@mixin flex-align-center
+  display: flex
+  align-items: center
+@mixin transform-item-center
+  position: absolute
+  left: 50%
+  top: 50%
+@mixin words-ellipsis
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+.debug *, .debug 
+  outline: 1px solid gold
+
+html 
+  font-size: 12px
+
+p, a, span 
+  margin: 0
+
+a
+  text-decoration: none
+
+.desc-text 
+  font-size: 1.2rem
+  text-align: center
+  color: #ab0202
+  padding: 5px 0px
+
+/*----登入頁面(首)----*/
+.wrapper 
+  padding-top: 45px
+
+.login-form
+  margin: 0 auto
+  font-family: cursive
+  border: solid 1px #000000
+  padding: 60px 60px
+  width: 40%
+  max-width: 400px
+  +flex-align-center
+  flex-direction: column
+  &__desc-text
+    text-align: center
+    font-size: 1.5rem
+    margin-top: 10px
+    color: #085fce
+  &__title
+    margin-bottom: 60px
+    text-align: center
+    font-size: 3rem
+  &__username, &__password 
+    width: 80%
+    padding: 6px 6px
+    font-size: 1.5rem
+    margin: 16px 0px
+  &__submit
+    margin: 0 auto
+    margin-top: 100px
+    width: 80%
+    padding: 20px 0px
+    font-size: 1.2rem
+    letter-spacing: 0.1rem
+    background: linear-gradient(to bottom, #000000, $background-dark)
+    border: 0
+    color: white
+  p 
+    font-size: 1.3rem
+    width: 80%
+/*----登入頁面(尾)----*/
+
+/*----首頁(首)----*/
+.navbar 
+  +flex-align-center
+  padding: 20px 50px
+  border-bottom: 1px solid #eeeeee
+  &__site-name
+    font-size: 2rem
+    color: #333333
+    font-weight: bold
+  &__info-block
+    +flex-align-center
+    flex: 1
+    justify-content: space-between
+    padding: 0px 20px
+    a
+      color: #787878
+      font-size: 1.2rem
+      margin-right: 15px
+.header 
+  background: linear-gradient(to bottom, #000000, $background-dark)
+  padding: 62px 0px
+  width: 100%
+  text-align: center
+  color: white
+  p:first-child
+    font-size: 1.5rem
+    margin-bottom: 10px
+    letter-spacing: 0.4em
+  p:not(:first-child)
+    font-size: 1.2rem
+    margin: 10px
+
+.article
+  &__form
+    width: 60%
+    margin: 0 auto
+    margin-top: 10px
+    background: white
+  &__content
+    padding: 28px 20px
+    border: 1px solid $border-color
+    margin: 10px 0px
+    & > *
+      margin-bottom: 20px
+  &__btn
+    display: flex
+    a
+      padding: 5px
+      border: 1px solid #a8a8a8
+      color: #a8a8a8
+      font-size: 1rem
+      letter-spacing: 0.1em
+      +btn-hover($color-white, $background-dark)
+      & + a
+        margin-left: 7px
+  &__edit-btn
+    padding: 5px
+    border: 1px solid $border-color
+    color: $border-color
+    font-size: 1rem
+    letter-spacing: 0.1em
+    +btn-hover($color-white, $background-dark)
+  &__title
+    +flex-align-center
+    justify-content: space-between
+    p
+      font-size: 2rem
+      font-weight: bold
+      @mixin words-ellipsis
+    & > div:first-child
+      display: flex
+      align-items: baseline
+      max-width: 80%
+  &__type
+    display: inline-block
+    font-size: 1rem
+    padding: 5px
+    margin-right: 5px
+    background: #525251
+    border: 1px solid $border-color
+    border-radius: 5px
+    color: white
+  &__user-info
+    border-bottom: 1px solid $border-color
+    padding: 0px 5px 10px 0px
+  &__user-nickname
+    font-size: 1.6rem
+    margin-left: 5px
+  &__user-username
+    color: $border-color
+  &__created-date
+    padding: 10px 20px
+    background: #eeeeee
+    color: $border-color
+  &__words
+    line-height: 1.5em
+    font-size: 1.6rem
+    margin-bottom: 20px
+    word-break: break-word
+    white-space: pre-line
+    overflow: hidden
+  &__readmore-btn
+    display: inline-block
+    padding: 5px 7px
+    margin: 0
+    border: 1px solid $border-color
+    font-size: 1rem
+    color: black
+    +btn-hover($color-white, $background-dark)
+  &__page
+    display: flex
+    align-items: flex-start
+    position: relative
+    line-height: 30px
+   
+.page-btn
+  +flex-align-center
+  width: 82%
+  justify-content: center
+  flex-direction: row-reverse
+  a
+    display: inline-block
+    font-family: cursive
+    font-weight: bold
+    color: $background-light
+    padding: 0 8px
+    line-height: 30px
+    background: $background-dark
+    margin: 0 3px
+    font-size: 1.2rem
+    border-radius: 5px
+    +btn-hover($color-white, $background-light)
+
+.authortext
+  display: inline-block
+  padding: 5px
+  background: $background-dark
+  border: 1px solid $border-color
+  border-radius: 5px
+  color: white
+
+.prev 
+  display: inline-block
+  position: relative
+  height: 30px
+  width: 9%
+  border-radius: 5px
+  background: $background-dark
+  &:hover
+    background: $background-light
+    color: $color-white
+    cursor: pointer
+    &:after
+      border-color: transparent white transparent transparent
+  &:after
+    content: ''
+    +transform-item-center
+    border-style: solid
+    border-color: transparent $background-light transparent transparent
+    border-width: 10px
+    transform: translate(-80%, -50%)
+
+.next 
+  position: absolute
+  right: 0
+  display: inline-block
+  height: 30px
+  width: 9%
+  border-radius: 5px
+  background: $background-dark
+  &:after 
+    content: ''
+    +transform-item-center
+    transform: translate(-20%, -50%)
+    border-style: solid
+    border-color: transparent transparent transparent $background-light
+    border-width: 10px
+  &:hover
+    background: $background-light
+    color: $color-white
+    cursor: pointer
+    &:after
+      border-color: transparent transparent transparent white
+
+/*參考網路 隱藏超過行數的文章*/
+.ellipsis 
+  display: -webkit-box
+  -webkit-line-clamp: 12
+  -webkit-box-orient: vertical
+
+footer 
+  background: $background-dark
+  margin-top: 50px
+  padding: 10px
+  color: white
+  text-align: center
+/*----首頁(尾)----*/
+
+.admin
+  &__content
+    border: 0
+    border-bottom: 1px solid $border-color
+    padding: 0px 0px 10px 0px
+    margin: 10px
+    .article__title
+      padding: 10px 0px
+      p
+        font-size: 1.4rem
+        max-width: 60%
+  &__created-date 
+    padding: 4px 10px
+    background: white
+/*----admin(尾)----*/
+
+/*----發布文章頁面(首)----*/
+.article
+  &__release 
+    position: relative
+    padding: 30px 35px
+    border: 1px solid $border-color
+    display: flex
+    flex-direction: column
+    & > *
+      margin-bottom: 20px
+  &__release-title
+    font-size: 1.7rem
+  &__input-title
+    padding: 4px 10px
+    font-size: 1.2rem
+    outline: none
+  &__input-type 
+    padding: 3px 10px
+    font-size: 1.2rem
+    background: #eeeeee
+    border: 0
+    outline: none
+  &__input-content
+    padding: 10px
+    font-size: 1.4rem
+    resize: none
+    outline: none
+  &__release-submit 
+    position: relative
+    button
+      position: absolute
+      top: 0
+      right: 0
+      display: inline-block
+      padding: 10px 34px
+      background: white
+      border: 1px solid #737373
+      +btn-hover($color-white, $background-dark)
+
+      
