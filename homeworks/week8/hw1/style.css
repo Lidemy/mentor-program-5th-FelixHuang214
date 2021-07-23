@@ -30,7 +30,7 @@ p {
 }
 
 .navbar__list li+li{
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .navbar__list li.active a, .navbar__list li:hover a {
