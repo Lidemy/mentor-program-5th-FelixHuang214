@@ -20,13 +20,15 @@ p, h1, h4 {
 
 .navbar__list {
 	display: flex;
+	padding: 0;
 }
 
 .navbar__list li {
 	list-style: none;
-	padding: 13px;
+	padding: 13px 25px;
 	border-radius: 8px;
-	font-size: 14px;
+	font-size: 18px;
+  text-align: center;
 }
 
 .navbar__list li+li{
@@ -68,6 +70,7 @@ p, h1, h4 {
 	margin-bottom: 36px;
 }
 
+
 p {
 	font-size: 18px;
 }
@@ -75,7 +78,6 @@ p {
 .Q:not(.Q-content) {
 	margin: 10px 0px;
 	position: relative;
-	left: 72px;
 	font-weight: normal;
 	cursor: pointer;
 	display: inline-block;
@@ -107,11 +109,12 @@ p {
 }
 
 /*繪製問題中間的區隔線*/
-.Q-line {
-	width: 758px;
-	height: 1px;
-	background: #a6e2c0;
-	margin: 20px 0px;
+
+.Q-lines {
+	border-bottom: 1px solid #a6e2c0;
+  padding: 20px 0px;
+  margin: 0px 0px 20px 0px;
+  min-width: 680px;
 }
 
 .Q-content {
@@ -204,46 +207,53 @@ footer {
 	.footer__top-right .navbar__site-name {
 		font-size: 36px;
 		position: relative;
-   	left: 25%;
-	}
-	.Q-line {
-		margin: 25px;
 	}
 
 	.navbar__list li {
-    padding: 27px 25px;
     font-size: 26px;
+    margin-right: 10px;
 	}
 }
 
 @media(max-width: 768px) {
 
 	.navbar .wrap {
-		height: 15%;
+		height: 158px;
 		flex-direction: column;
+		padding: 0;
 	}
 
 	.navbar__site-name {
-		margin-top: 12px;
+		position: relative;
+    top: 20px;
+	}
+
+	.section__title h1 {
+		font-size: 1.5em;
 	}
 
 	.navbar__list {
-		position: relative;
-		left: -8%;
+		width: 100%;
 	}
 
 	.navbar__list li {
-		padding: 14px;
+		padding: 13px;
+		flex: 1;
+		margin: 0;
+		border-radius: 0;
 	}
+
 
 	.faq-block {
 		position: relative;
 		max-width: 65%;
-		right: 17%;
+	}
+
+	.Q-lines {
+    min-width: 100%;
 	}
 
 	.Q-content {	
-		min-width: 100%;
     position: relative;
 	}
 
@@ -256,9 +266,6 @@ footer {
 		font-size: 14px;
 	}
 
-	.Q-line {
-		max-width: 135%;
-	}
 
 	.Q-title {
 		line-height: 1.3em;
@@ -267,7 +274,6 @@ footer {
 	.footer__top-right .navbar__site-name {
 		font-size: 26px;
 		position: relative;
-   	left: 25%;
 	}
 
 	.footer__top-right {
@@ -277,8 +283,4 @@ footer {
 	.footer__top-left {
 		font-size: 12px;
 	}
-	.navbar__list li+li {
-		margin-left: 21px;
-	}
-
 }

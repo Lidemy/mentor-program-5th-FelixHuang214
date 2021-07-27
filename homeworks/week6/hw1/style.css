@@ -31,7 +31,7 @@ body {
 }
 
 .navbar__list li+li{
-	margin-left: 10px;
+	margin-left: 5px;
 }
 
 .navbar__list li.active a, .navbar__list li:hover a {
@@ -154,13 +154,13 @@ p {
 
 .section__client {
 	display: flex;
-	margin: 72px;
+	margin: 72px 0px;
+	justify-content: space-between;
 }
 
 /*評論區塊包含外面框線*/
 .comment {
 	position: relative;
-	top: 35%;
 }
 
 
@@ -177,10 +177,8 @@ p {
 
 /*統一大頭照區塊的大小*/
 .headshot {
-	position: absolute;
   display: inline-block;
   margin-top: -67px;
-  margin-left: -56px;
 }
 
 /*版權方塊元素*/
@@ -218,8 +216,8 @@ footer {
 	margin-top: 43px;
 }
 
-@media(max-width: 768px) {
 
+@media(max-width: 768px) {
 
 	.navbar .wrap {
 		height: 158px;
@@ -274,11 +272,18 @@ footer {
 
 	.client {
 		margin-top: 70px;
-		height: 150px;
+		width: 90%;
+		height: 270px;
+	}
+
+	.headshot {
+		position: absolute;
+		left: 50%;
+  	transform: translate(-50%);
 	}
 
 	.comment {
-		top: 50%;
+		top: 42%;
 	}
 
 	.footer__top {
@@ -293,5 +298,4 @@ footer {
 	.footer__top-right p {
 		position: static;
 	}
-
 }
