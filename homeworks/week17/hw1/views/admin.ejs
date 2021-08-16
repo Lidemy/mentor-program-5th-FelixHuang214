@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="text/css" rel="stylesheet" href="/css/normalize.css" />
+  <link type="text/css" rel="stylesheet" href="/css/style.css" />
+  <title>Blog-admin</title>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/home">
+      <div class="navbar__site-name">Who's Blog</div>
+    </a>
+    <div class="navbar__info-block">
+      <div class="navbar__article-info">
+        <a>文章列表</a>
+        <a>分類專區</a>
+        <a>關於我</a>
+      </div>
+      <div class="navbar__member-info">
+        <a href="/add_article">新增文章</a>
+        <a href="/logout">登出</a>
+      </div>
+    </div>
+  </nav>
+  <header class="header">
+    <p>存放技術之地</p>
+    <p>Hello,<%= ' ' + (username || 'Guest') + '!'; %></p> 
+    <p>Welcome to my blog</p>
+  </header>
+  <main class="article">
+    <form class="article__form">
+      <div class="article__page">
+        <a class="prev" href="/admin/<%= page - 1 || page %>"></a>
+        <div class="page-btn">
+        <% while (pageMove > 0) {
+          if (pageMove === page) { %>
+            <a class="pagenow"><%= pageMove %></a>
+          <% } else { %>
+            <a href="/admin/<%= pageMove %>"><%= pageMove %></a>
+          <% } 
+          pageMove--
+        } %>
+        <% pageMove = finalPage %>
+        </div>
+        <a class="next" href="/admin/<%= finalPage - page ? page + 1 : finalPage %>">
+        </a>
+      </div>
+      <% rows.forEach(row => { %>
+        <div class="atricle__content admin__content">
+          <div class="article__title">
+            <div>
+              <p>@<%= row.User.username %></p>
+              <p><%= row.title %></p>
+            </div>
+            <div class="article__btn">
+              <a href="/edit/<%= row.id %>">編輯</a>
+              <% if (row.deleted === '0') { %>
+                <a href="/delete/<%= row.id %>">刪除</a>
+              <% } else { %>
+                <a href="/restore/<%= row.id %>">復原</a>
+              <% } %>
+            </div>
+          </div>
+          <div class="article__created-date admin__created-date"><%= row.createdAt %></div>
+        </div>
+      <% }) %>
+      <div class="article__page">
+        <a class="prev" href="/admin/<%= page - 1 || page %>"></a>
+        <div class="page-btn">
+        <% while (pageMove > 0) {
+          if (pageMove === page) { %>
+            <a class="pagenow"><%= pageMove %></a>
+          <% } else { %>
+            <a href="/admin/<%= pageMove %>"><%= pageMove %></a>
+          <% } 
+          pageMove--
+        } %>
+        <% pageMove = finalPage %>
+        </div>
+        <a class="next" href="/admin/<%= finalPage - page ? page + 1 : finalPage %>">
+        </a>
+      </div>
+    </form>
+  </main>
+  <footer>
+    <span>Copyright © 2020 Who's Blog All Rights Reserved.</span>
+  </footer>
+  <% if (errorMessage && errorMessage.length > 0) { %>
+    <script>
+      window.onload = function() { 
+        window.alert("<%= errorMessage %>")
+        window.location = '/admin'
+      }
+    </script>
+  <% } %>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/normalize.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <div class="lottery-backend">
+        <table class="lottery-backend__info">
+          <tr class="lottery-backend__info-content">
+            <td class="open-list"></td>
+            <td class="id">14</td>
+            <td>獎項</td>
+            <td>獎品標題</td>
+            <td>機率</td>
+            <td class="lottery-backend__crud-btn">
+              <a>編輯</a>
+              <a>刪除</a>
+            </td>
+          </tr>
+        </table>
+        <div class="lottery-backend__description">
+          <p>
+            此為範例頁面無法刪除或編輯，點擊左上角可開啟內容。
+            目前可使用編輯、刪除與新增功能
+            新增內容不可為空，圖片格式需為 image/jpeg 或 image/png，機率必須為數字
+            編輯內容除了圖片其餘皆不能為空，圖片格式需為 image/jpeg 或 image/png，機率必須為數字
+          </p>
+        </div>
+        <div class="lottery-backend__image-info">
+          <p class="img-url">網址：<%=  %></p>
+          <div class="lottery-backend__image-contorl-btn">
+            <a class="lottery-backend__update-image">更新</a>
+            <a class="lottery-backend__check-image">預覽</a>
+          </div>
+        </div>
+      </div>
+      <% rows.forEach(row => { %>
+        <div class="lottery-backend">
+          <table class="lottery-backend__info">
+            <tr class="lottery-backend__info-content">
+              <td class="open-list"></td>
+              <td class="id"><%= row.id %></td>
+              <td><%= row.award %></td>
+              <td><%= row.title %></td>
+              <td><%= row.probability %>%</td>
+              <td class="lottery-backend__crud-btn">
+                <a href="/edit/<%= row.id %>">編輯</a>
+                <a href="/delete/<%= row.id %>">刪除</a>
+              </td>
+            </tr>
+          </table>
+          <div class="lottery-backend__description">
+            <p class="hidden"><%= row.content %></p>
+          </div>
+          <div class="lottery-backend__image-info">
+            <p class="img-url">網址：<%=  %></p>
+            <div class="lottery-backend__image-contorl-btn">
+              <a class="lottery-backend__update-image">更新</a>
+              <a class="lottery-backend__check-image" href="/image/<%= row.id %>">預覽</a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</body>
+<% if (errorMessage && errorMessage.length > 0) { %>
+  <script>
+    window.onload = function() { 
+      window.alert("<%= errorMessage %>")
+      window.location = '/'
+    }
+  </script>
+<% } %>
+<script>
+$(function() {
+  const infoContent = $('.lottery-backend__info-content').children().filter('td:not(:first-child, :last-child)')
+  //滑鼠指著內容會顯示完整文字
+  infoContent.each(function() {
+    $(this).prop('title', $(this).text())
+  })
+  $('.img-url').each(function() {
+    $(this).prop('title', $(this).text())
+  })
+  //開啟隱藏內容
+  $('.open-list').click(function() {
+    $(this).closest('.lottery-backend')
+      .find('.lottery-backend__description')
+      .children().toggleClass('hidden')
+  })
+  //在最後一項加上新增項目按鈕
+  $('.lottery-backend').last().append('<a href="/add_lottery"><div class="add-lottery-btn">新增項目</div></a>')
+})
+</script>
+</html>

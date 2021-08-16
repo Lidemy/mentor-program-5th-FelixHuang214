@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/normalize.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <form class="form-add"action="/add_lottery" method="post" enctype="multipart/form-data">
+        <a class="home" href="/">回到首頁</a>
+        <div>
+          <span>獎項：</span>
+          <input type="text" name="award" />
+        </div>
+        <div>
+          <span>名稱：</span>
+          <input type="text" name="title" />
+        </div>
+        <div>
+          <span>機率：</span>
+          <input type="text" name="probability" />
+        </div>
+        <div>
+          <span>內容：</span>
+          <textarea type="text" rows="5" name="content"></textarea>
+        </div>
+        <input type="file" name="picture" />
+        <input type="submit" />
+      </form>
+    </div>
+  </div>
+  <% if (errorMessage && errorMessage.length > 0) { %>
+    <script>
+      window.onload = function() { 
+        window.alert("<%= errorMessage %>")
+        window.location = '/add_lottery'
+      }
+    </script>
+  <% } %>
+</body>
+</html>
