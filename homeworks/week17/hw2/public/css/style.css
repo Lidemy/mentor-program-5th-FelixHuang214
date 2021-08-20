@@ -1,0 +1,256 @@
+@charset "UTF-8";
+body {
+  font-size: 12px;
+  background: #e0e0e0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.home {
+  text-align: right;
+  color: black;
+}
+
+.container {
+  width: 100%;
+}
+
+.wrapper {
+  margin: auto;
+  width: 770px;
+  background: white;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid #79c3f7;
+}
+
+.lottery-backend {
+  font-size: 1.2rem;
+  padding: 20px;
+  font-family: cursive;
+}
+
+.lottery-backend__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.lottery-backend__info-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 730px;
+  background: #2566d2db;
+  color: #f7f5f5;
+}
+
+.lottery-backend__info-content td {
+  padding: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.lottery-backend__info-content td:nth-child(1) {
+  text-overflow: clip;
+  min-width: 36px;
+}
+
+.lottery-backend__info-content td:nth-child(2) {
+  min-width: 36px;
+}
+
+.lottery-backend__info-content td:nth-child(3) {
+  min-width: 60px;
+}
+
+.lottery-backend__info-content td:nth-child(4) {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  min-width: 442px;
+}
+
+.lottery-backend__info-content td:nth-child(5) {
+  min-width: 48px;
+}
+
+.lottery-backend__info-content td:nth-child(6) {
+  min-width: 108px;
+}
+
+.lottery-backend__crud-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.lottery-backend__crud-btn a {
+  font-size: 1rem;
+  padding: 4px 2px;
+  margin: 0px 2px;
+  display: inline-block;
+  background: #434343;
+  color: #f7f5f5;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.lottery-backend__crud-btn a:hover {
+  color: #434343;
+  background-color: rgba(244, 244, 244, 0.5);
+}
+
+.lottery-backend__description p {
+  border: 1px solid #79c3f7;
+  padding: 10px;
+  word-break: break-word;
+  background: #f7f7f7;
+  color: #434343;
+}
+
+.lottery-backend__image-info {
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #83d7ff;
+  color: #434343;
+}
+
+.lottery-backend__image-info p {
+  border: 1px solid #79c3f7;
+  border-collapse: collapse;
+  line-height: 30px;
+  width: 91%;
+  padding: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lottery-backend__image-contorl-btn {
+  border: 1px solid #79c3f7;
+  min-width: 108px;
+  height: 41.6px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.lottery-backend__image-contorl-btn a {
+  display: inline-block;
+  margin: 2px;
+  padding: 4px 2px;
+  background: #434343;
+  color: #f7f5f5;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.lottery-backend__image-contorl-btn a:hover {
+  color: #434343;
+  background-color: rgba(244, 244, 244, 0.7);
+}
+
+.add-lottery-btn {
+  border: 2px solid white;
+  color: white;
+  border-radius: 4px;
+  margin-top: 5px;
+  background: #404040;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-lottery-btn:hover {
+  background-color: #555454;
+}
+
+.img-url {
+  min-height: 41.6px;
+}
+
+.form-add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.2rem;
+  margin: 20px auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px;
+}
+
+.form-add > div {
+  margin-top: 10px;
+}
+
+.form-add input {
+  padding: 5px;
+  width: 100%;
+}
+
+.form-add textarea {
+  margin-top: 10px;
+  width: 100%;
+}
+
+input[type="file"] {
+  margin: 20px 0px;
+}
+
+.open-list:hover {
+  cursor: pointer;
+}
+
+.open-list:after {
+  content: '▼';
+  width: 20px;
+  height: 20px;
+  color: #404040;
+}
+
+.open-list:hover:after {
+  color: #6e6e6e;
+}
+
+.hidden {
+  display: none;
+}
+/*# sourceMappingURL=style.css.map */

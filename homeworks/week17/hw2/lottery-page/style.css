@@ -1,0 +1,323 @@
+p {
+  margin: 0;
+}
+
+.navbar {
+  box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+}
+
+.navbar .wrap {
+  height: 84px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrap {
+  margin: 0 auto;
+  padding: 0px 12px;
+}
+
+.navbar__list {
+  display: flex;
+}
+
+.navbar__list li {
+  list-style: none;
+  padding: 13px 25px;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+.navbar__list li+li{
+  margin-left: 5px;
+}
+
+.navbar__list li.active a, .navbar__list li:hover a {
+  color:white;
+}
+
+.navbar__list li:hover {
+  background: #ff7286;
+}
+
+.navbar__list a {
+  text-decoration: none;
+  color: black;
+}
+
+
+.navbar__site-name {
+  font-size: 36px;
+  color: #489846;
+}
+
+.active {
+  background: #ff7286;
+}
+
+.banner {
+  height: 767px;
+  position: relative;
+}
+
+.banner__img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: url(bg.jpg) center/cover no-repeat;
+}
+
+.form {
+  margin: 0 auto;
+  padding: 40px 21px 24px 18px;
+  border-radius: 16px;
+  background: white;
+  height: 560px;
+  width: 500px;
+  position: relative;
+  top: 55px;
+  z-index: 10;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  color: #5ec1b6;
+  margin-bottom: 25px;
+}
+
+.form-info__item {
+  position: relative;
+  display: flex;
+  padding: 19px 0px 24px 0px;
+  border-bottom: 1px solid #cdcdcd;
+  width: 460px;
+}
+
+
+.info-item__title {
+  min-width: 82px;
+  font-weight: bold;
+}
+
+.info-item__content {
+  font-size: 16px;
+  max-width: 320px;
+  margin-left: 20px;
+  line-height: 1.63em;
+}
+
+.btn-area {
+  justify-content: center;
+  display: flex;
+}
+
+.btn {
+  border-radius: 8px;
+  padding: 16px 0px;
+  width: 60%;
+  text-align: center;
+  font-size: 20px;
+  background: #e62a45;
+  color: white;
+  margin-top: 36px;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  cursor: pointer;
+  transform: scale(1.1, 1.1);
+  transition: all 0.2s;
+}
+
+/*版權方塊元素*/
+.footer__bottom p {
+  padding: 10px;
+  font-size: 16px;
+  background: #35564b;
+  text-align: center;
+  color: white;
+}
+
+/*調整餐廳資訊區塊內元素*/
+.footer__top {
+  display: flex;
+  padding: 40px;
+  background: #e8efee;
+  justify-content: space-between;
+}
+
+/*調整餐廳資訊左側區塊*/
+.footer__top-left {
+  line-height: 2em;
+  font-size: 14px;
+  color: #484848;
+}
+
+/*調整餐廳資訊右側文字(Facebook...)*/
+.footer__top-right p {
+  padding-top: 15px;
+  font-size: 18px;
+}
+
+/* 接收訊息後重新 render 網頁 */
+
+.block-hide {
+  display: none;
+}
+
+.banner .wrap {
+  margin: 0 auto;
+  width: 650px;
+  position: relative;
+  top: 190px;
+}
+
+.result-title {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.result-btn {
+  padding: 18px 0px;
+  background: #e62a45;
+  width: 400px;
+  color: white;
+  text-align: center;
+  margin: auto;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.result-btn:hover {
+  cursor: pointer;
+}
+
+body {
+  position: relative;
+  width: 100%;
+}
+
+.loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 9999999;
+}
+
+@keyframes loading-animate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading:after {
+  position: sticky;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  content: '';
+  display: inline-block;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #59a782;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: loading-animate 1.2s linear infinite;
+}
+
+@media only screen and (min-width: 767px) and (max-width: 1024px) {
+  .banner {
+    height: 1051px;
+  }
+
+  .navbar__list li {
+    white-space: nowrap;
+  }
+
+  .navbar__site-name {
+    white-space: nowrap;
+  }
+
+  .form {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+@media(max-width: 766px) {
+
+  .navbar .wrap {
+    height: 158px;
+    flex-direction: column;
+    padding: 0px;
+  }
+
+  .navbar__list li {
+    flex: 1;
+    border-radius: 0;
+    text-align: center;
+    padding: 13px;
+  }
+
+  .navbar__list {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    margin-right: 40px;
+  }
+
+  .navbar__site-name {
+    position: relative;
+    top: 20px;
+  }
+
+  .footer__top {
+    flex-direction: column-reverse;
+  }
+
+  .footer__top-left {
+    margin-right: 0;
+    margin-top: 16px;
+  }
+
+  .footer__top-right p {
+    position: static;
+  }
+
+  .form {
+    width: 87%;
+  }
+
+  .form-info__item {
+    width: auto;
+  }
+
+  .info-item__title {
+    font-size: 16px;
+  }
+
+  .info-item__content {
+    font-size: 14px;
+    line-height: 1.2em;
+    margin-left: 5px;
+  }
+
+  .btn {
+    padding: 16px 0px;
+  }
+
+  .banner .wrap {
+    width: auto;
+  }
+
+  .result-btn {
+    width: 60%
+  }
+  
+}

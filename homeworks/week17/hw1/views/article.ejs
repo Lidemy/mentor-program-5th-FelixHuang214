@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="text/css" rel="stylesheet" href="/css/normalize.css" />
+  <link type="text/css" rel="stylesheet" href="/css/style.css" />
+  <title>Blog-Login</title>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/home">
+      <div class="navbar__site-name">Who's Blog</div>
+    </a>
+    <div class="navbar__info-block">
+      <div class="navbar__article-info">
+      <% if (username) { %>
+        <a>文章列表</a>
+        <a>分類專區</a>
+        <a>關於我</a>
+      <% } %>
+      </div>
+      <div class="navbar__member-info">
+        <% if (username) { %>
+          <a href="/add_article">新增文章</a>
+          <a href="/admin">管理後台</a>
+          <a href="/logout">登出</a>
+        <% } else { %>
+          <a href="/register">註冊</a>
+          <a href="/login">登入</a>
+        <% } %>
+      </div>
+    </div>
+  </nav>
+  <header class="header">
+    <p>存放技術之地</p>
+    <p>Hello,<%= ' ' + (username || 'Guest') + '!'; %></p> 
+    <p>Welcome to my blog</p>
+  </header>
+  <main class="article">
+    <form class="article__form">
+      <div class="article__content">
+        <div class="article__title">
+          <div>
+            <div class="article__type"><%= row.type %></div>
+            <p><%= row.title %></p>
+          </div>
+        </div>
+        <div class="article__user-info">
+          <div class="authortext">作者</div>
+          <a class="article__user-nickname"><%= row.User.nickname  %></a>
+          <a class="article__user-username"><%= row.User.username %></a>
+        </div>
+        <div class="article__created-date"><%= row.createdAt %></div>
+        <div class="article__words"><%= row.content %></div>
+      </div>
+    </form>
+  </main>
+  <footer>
+    <span>Copyright © 2020 Who's Blog All Rights Reserved.</span>
+  </footer>
+  <% if (errorMessage && errorMessage.length > 0) { %>
+    <script>
+      window.onload = function() { 
+        window.alert("<%= errorMessage %>")
+        window.location = '/article/' + "<%= row.id %>"
+      }
+    </script>
+  <% } %>
+</body>
+</html>
