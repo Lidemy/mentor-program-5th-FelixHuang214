@@ -122,6 +122,7 @@ function App() {
   const radioRef = useRef(null);
 
   useEffect(() => {
+    // 從 localStorage 判斷有沒有值，有的話把加入屬性 checked="true"
     radioRef.current && radioRef.current.setAttribute("checked", true);
 
     const writeValueToLocalStorage = () => {

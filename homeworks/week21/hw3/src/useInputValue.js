@@ -3,7 +3,6 @@ import { defaultData as DATA } from "./useStaticData";
 
 const useInputValue = () => {
   const [inputValue, setInputValue] = useState(() => {
-    console.log("---inputValue---");
     const { localInputValue } = window.localStorage;
     return localInputValue
       ? JSON.parse(localInputValue)
@@ -11,6 +10,7 @@ const useInputValue = () => {
           ...DATA.initialInputValue,
         };
   });
+
   const handleInputValue = (e, name) => {
     const { value } = e.target;
     setInputValue({
