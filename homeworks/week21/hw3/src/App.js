@@ -48,7 +48,7 @@ const Radio = ({ info, handleInputValue, value, radioRef }) => {
   );
 };
 
-const Section = ({ info, events, state, approaches }) => {
+const Section = ({ info, events, state, approaches, radioRef }) => {
   const { handleInputValue } = events;
   const { type, title, name, description, necessary } = info;
   const { getErrorMessageFromMessageState, getValueFromInputValue } =
@@ -74,6 +74,7 @@ const Section = ({ info, events, state, approaches }) => {
           handleInputValue={handleInputValue}
           value={getValueFromInputValue(name)}
           info={info}
+          radioRef={radioRef}
         />
       )}
       {getErrorMessageFromMessageState(name) && (
@@ -162,6 +163,7 @@ function App() {
             }}
             info={{ ...data }}
             events={{ handleInputValue }}
+            radioRef={radioRef}
           />
         ))}
         <S.Button onClick={handleSubmitConditions}>送出</S.Button>
