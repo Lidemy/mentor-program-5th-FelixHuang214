@@ -1,0 +1,171 @@
+body
+  font-size: 12px
+  background: #e0e0e0
+*
+  box-sizing: border-box
+
+p
+  margin: 0
+
+a
+  text-decoration: none
+
+.home
+  text-align: right
+  color: black
+
+.container
+  width: 100%
+
+.wrapper 
+  margin: auto
+  width: 770px
+  background: white
+
+table
+  border-collapse: collapse
+
+td
+  border: 1px solid #79c3f7
+
+.lottery-backend
+  font-size: 1.2rem
+  padding: 20px
+  font-family: cursive
+  
+.lottery-backend__info
+  display: flex
+
+.lottery-backend__info-content
+  display: flex
+  max-width: 730px
+  background: #2566d2db
+  color: #f7f5f5
+  td
+    padding: 5px
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    text-align: center
+  td:nth-child(1)
+    text-overflow: clip
+    min-width: 36px
+  td:nth-child(2)
+    min-width: 36px
+  td:nth-child(3)
+    min-width: 60px
+  td:nth-child(4)
+    flex: 2
+    min-width: 442px
+  td:nth-child(5)
+    min-width: 48px
+  td:nth-child(6)
+    min-width: 108px
+
+.lottery-backend__crud-btn
+  display: flex
+  justify-content: center
+  align-items: center
+  a
+    font-size: 1rem
+    padding: 4px 2px
+    margin: 0px 2px
+    display: inline-block
+    background: #434343
+    color: #f7f5f5
+    border-radius: 4px
+    cursor: pointer
+  a:hover
+    color: #434343
+    background-color: rgba(244,244,244,0.5)
+
+.lottery-backend__description
+  p
+    border: 1px solid #79c3f7
+    padding: 10px
+    word-break: break-word
+    background: #f7f7f7
+    color: #434343
+
+.lottery-backend__image-info
+  font-size: 1rem
+  display: flex
+  align-items: center
+  background: #83d7ff
+  color: #434343
+  p
+    border: 1px solid #79c3f7
+    border-collapse: collapse
+    line-height: 30px
+    width: 91%
+    padding: 5px
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+.lottery-backend__image-contorl-btn
+  border: 1px solid #79c3f7
+  min-width: 108px
+  height: 41.6px
+  display: flex
+  justify-content: center
+  align-items: center
+  a
+    display: inline-block
+    margin: 2px
+    padding: 4px 2px
+    background: #434343
+    color: #f7f5f5
+    border-radius: 4px
+    cursor: pointer
+  a:hover
+    color: #434343
+    background-color: rgba(244,244,244,0.7)
+
+.add-lottery-btn
+  border: 2px solid white
+  color: white
+  border-radius: 4px
+  margin-top: 5px
+  background: #404040
+  text-align: center
+  cursor: pointer
+
+.add-lottery-btn:hover
+  background-color: #555454
+
+.img-url
+  min-height: 41.6px
+
+.form-add
+  display: flex
+  font-size: 1.2rem
+  margin: 20px auto
+  flex-direction: column
+  padding: 20px
+  & > div
+    margin-top: 10px
+  input
+    padding: 5px
+    width: 100%
+  textarea
+    margin-top: 10px
+    width: 100%
+
+input[type="file"]
+  margin: 20px 0px
+
+.open-list:hover
+  cursor: pointer
+
+.open-list:after
+  content: '▼'
+  width: 20px
+  height: 20px
+  color: #404040
+
+.open-list:hover:after
+  color: #6e6e6e
+
+.hidden
+  display: none
