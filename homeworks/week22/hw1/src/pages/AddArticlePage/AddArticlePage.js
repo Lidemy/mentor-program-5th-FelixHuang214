@@ -116,6 +116,7 @@ export default function AddArticlePage() {
         />
         <Textarea
           placeholder="請輸入內容"
+          value={postContent.content}
           rows="12"
           onChange={handleChangeValue}
           name="content"
